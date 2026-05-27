@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+@theme {
+  --color-hotpink: #7C3AED; /* Kept mapped to hotpink to prevent standard Tailwind usage breakages, colored violet */
+  --color-brandviolet: #7C3AED;
+  --font-mono: "Space Mono", "Fira Code", monospace;
+  --font-bubble: "Unbounded", "Oi", sans-serif;
+  --font-sans: "Outfit", "Inter", sans-serif;
+}
+
+/* Custom Styles for overlapping hand-lettered text */
+.bubble-title {
+  font-family: 'Unbounded', 'Oi', sans-serif;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+}
+
+/* Custom scrollbar and smooth scroll behaviour */
+html {
+  scroll-behavior: smooth;
+  background-color: #7C3AED;
+}
+
+/* Float Animation for isometric illustration */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(0.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.float-element {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Custom animations and micro-interactions */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-4px) scale(1.05); }
+}
+
+.bounce-hover:hover {
+  animation: bounce-slow 1s ease-in-out infinite;
+}
+
+/* Pokémon Card Holographic Shimmer & Glare Effect */
+@keyframes holo-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.holo-shimmer-bg {
+  background: linear-gradient(
+    115deg,
+    rgba(255, 0, 128, 0.75) 0%,
+    rgba(255, 94, 0, 0.7) 12%,
+    rgba(255, 228, 0, 0.75) 25%,
+    rgba(0, 243, 115, 0.7) 38%,
+    rgba(0, 185, 255, 0.75) 50%,
+    rgba(138, 43, 226, 0.7) 62%,
+    rgba(255, 0, 128, 0.75) 75%,
+    rgba(255, 228, 0, 0.7) 88%,
+    rgba(255, 0, 128, 0.75) 100%
+  );
+  background-size: 200% 200%;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.holo-glare {
+  background: linear-gradient(
+    125deg,
+    rgba(255,255,255,0) 30%,
+    rgba(255,255,255,0.4) 42%,
+    rgba(255,255,255,0.7) 50%,
+    rgba(255,255,255,0.4) 58%,
+    rgba(255,255,255,0) 70%
+  );
+  background-size: 200% 200%;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Star sparkle animation */
+@keyframes sparkle {
+  0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 0.9; }
+}
+
+.sparkle-element {
+  animation: sparkle 3.5s ease-in-out infinite;
+}
+
+/* Drifting Floating Pipelines and nodes */
+@keyframes drift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(15px, -15px) rotate(3deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.drift-element {
+  animation: drift 8s ease-in-out infinite;
+}
+
+/* Scrapbook & Neo-Brutalist Theme Utilities */
+.graph-paper-bg {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-color: #faf9f5;
+}
+
+.graph-paper-dark-bg {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-color: #191919;
+}
+
+.scrapbook-card {
+  background-color: #ffffff;
+  border: 3px solid #000000;
+  box-shadow: 6px 6px 0px 0px #000000;
+  border-radius: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scrapbook-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px 0px #000000;
+}
+
+.paper-tape {
+  background: rgba(255, 253, 230, 0.65); /* transparent yellowish masking tape */
+  backdrop-filter: blur(1px);
+  border-left: 1px dashed rgba(0, 0, 0, 0.15);
+  border-right: 1px dashed rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.05);
+}
+
+.spin-slow {
+  animation: spin 12s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Holographic Text Hover Effect */
+.holo-text-hover {
+  transition: color 0.3s ease;
+}
+
+.holo-text-hover:hover,
+.group:hover .holo-text-hover {
+  background: linear-gradient(
+    120deg,
+    #FF73B5 0%,
+    #FFD860 25%,
+    #A5CF4E 50%,
+    #00A7FE 75%,
+    #FF73B5 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: holo-text-sweep 2s linear infinite;
+}
+
+@keyframes holo-text-sweep {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Holographic Glow keyframes for GitHub Logo */
+@keyframes holo-glow-sweep {
+  0% { 
+    box-shadow: 0 0 10px rgba(255, 115, 181, 0.8), 0 0 20px rgba(255, 115, 181, 0.4), 3px 3px 0px #000;
+    border-color: #FF73B5;
+  }
+  25% { 
+    box-shadow: 0 0 10px rgba(255, 216, 96, 0.8), 0 0 20px rgba(255, 216, 96, 0.4), 3px 3px 0px #000;
+    border-color: #FFD860;
+  }
+  50% { 
+    box-shadow: 0 0 10px rgba(165, 207, 78, 0.8), 0 0 20px rgba(165, 207, 78, 0.4), 3px 3px 0px #000;
+    border-color: #A5CF4E;
+  }
+  75% { 
+    box-shadow: 0 0 10px rgba(0, 167, 254, 0.8), 0 0 20px rgba(0, 167, 254, 0.4), 3px 3px 0px #000;
+    border-color: #00A7FE;
+  }
+  100% { 
+    box-shadow: 0 0 10px rgba(255, 115, 181, 0.8), 0 0 20px rgba(255, 115, 181, 0.4), 3px 3px 0px #000;
+    border-color: #FF73B5;
+  }
+}
+
+/* Shifting holographic background keyframe */
+@keyframes holo-bg-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.holo-stamp-active {
+  background: linear-gradient(
+    135deg,
+    #FF73B5,
+    #FFD860,
+    #A5CF4E,
+    #00A7FE,
+    #FF73B5
+  ) !important;
+  background-size: 400% 400% !important;
+  animation: holo-bg-shift 4s ease infinite !important;
+  border-color: #000000 !important;
+  box-shadow: 3px 3px 0px #000 !important;
+}
+
+.holo-stamp-active svg {
+  fill: #ffffff !important;
+  filter: drop-shadow(1.5px 1.5px 0px rgba(0,0,0,1)) !important;
+}
+
+/* Performance Adaptations for GPU rendering and rendering containment */
+.gpu-accelerated {
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.section-contain {
+  content-visibility: auto;
+  contain-intrinsic-size: 100vh;
+}
+
+/* Hide native cursor when CustomCursor component is successfully active */
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor-active,
+  .custom-cursor-active body,
+  .custom-cursor-active a,
+  .custom-cursor-active button,
+  .custom-cursor-active [role="button"],
+  .custom-cursor-active input,
+  .custom-cursor-active select,
+  .custom-cursor-active textarea,
+  .custom-cursor-active .cursor-default,
+  .custom-cursor-active .cursor-pointer {
+    cursor: none !important;
+  }
+}
+
+
