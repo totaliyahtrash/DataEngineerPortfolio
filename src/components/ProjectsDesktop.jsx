@@ -172,11 +172,62 @@ export default function ProjectsDesktop() {
           {/* Carousel Track */}
           <div className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory px-6 pb-6 space-x-5 scroll-smooth w-full">
             
-            {/* PANEL 1: Sentiment Analyzer */}
+            {/* PANEL 1: Steam Market Intel */}
             <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#00A7FE] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">
               <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
               {/* Visual Sketch */}
               <div className="w-full bg-white border-3 border-black p-3 rounded-xl shadow-[3px_3px_0_#000] relative rotate-[-1.5deg] shrink-0">
+                <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-20 h-20 mx-auto mb-1 float-element">
+                  <path d="M55 45 v25 c0 6 25 6 25 0 v-25" fill="#FFD860" stroke="black" strokeWidth="2.5" />
+                  <ellipse cx="67.5" cy="45" rx="12.5" ry="4.5" fill="#FFE28A" stroke="black" strokeWidth="2.5" />
+                  <path d="M55 53 c0 5 25 5 25 0" stroke="black" strokeWidth="2" />
+                  <path d="M55 61 c0 5 25 5 25 0" stroke="black" strokeWidth="2" />
+                  <rect x="15" y="28" width="34" height="22" rx="7" fill="#FF73B5" stroke="black" strokeWidth="2.5" />
+                  <path d="M22 39 h6 m-3 -3 v6" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
+                  <circle cx="39" cy="36" r="2" fill="black" />
+                  <circle cx="43" cy="41" r="2" fill="black" />
+                  <path d="M35 50 c 5 12 18 12 24 5" stroke="black" strokeWidth="2.5" strokeDasharray="3,3" strokeLinecap="round" fill="none" />
+                  <polygon points="59,57 60,52 55,54" fill="black" />
+                </svg>
+                <h4 className="font-mono font-bold text-[8px] uppercase text-black/50 text-center mb-0.5">[steam market intel]</h4>
+                <p className="font-mono text-[8px] text-center font-semibold leading-tight text-black/80">Processes 27,000+ Steam game records into a production-grade PostgreSQL star schema.</p>
+              </div>
+              {/* Text Card */}
+              <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/steam-market-intel" rotateClass="rotate-[1deg] flex-grow">
+                <div className="inline-flex items-center space-x-1.5 bg-[#FFD860] border-2 border-black rounded px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[1px_1px_0_#000]">
+                  <span>ETL Pipeline</span>
+                  <span>⚙️</span>
+                </div>
+                <h3 className="font-bubble text-base sm:text-lg font-black text-black mb-1 uppercase leading-none">STEAM MARKET INTEL</h3>
+                <p className="font-mono text-[9px] font-semibold leading-relaxed mb-3 text-black/85">
+                  An end-to-end data pipeline processing 27,000+ Steam records into a Postgres star schema.
+                </p>
+                <div className="border-t border-dashed border-black/25 pt-2.5 space-y-1">
+                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
+                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span><strong>ingest & clean</strong>: pandas transformations & null cleaning.</span>
+                  </div>
+                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
+                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span><strong>star schema</strong>: maps dim_genre, dim_developer, dim_release.</span>
+                  </div>
+                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
+                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span><strong>db integrity</strong>: database-enforced FK constraints.</span>
+                  </div>
+                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
+                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span><strong>idempotency</strong>: safe re-runs via pre-load verification.</span>
+                  </div>
+                </div>
+              </ProjectTextCard>
+            </div>
+
+            {/* PANEL 2: Sentiment Analyzer */}
+            <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#FFD860] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">
+              <div className="absolute inset-[0] bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
+              {/* Visual Sketch */}
+              <div className="w-full bg-white border-3 border-black p-3 rounded-xl shadow-[3px_3px_0_#000] relative rotate-[1.5deg] shrink-0 z-10">
                 <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-20 h-20 mx-auto mb-1 float-element">
                   <path d="M20 25 h60 v40 h-20 l-15 15 l-5-15 h-20 z" fill="#FF73B5" />
                   <circle cx="40" cy="40" r="5" fill="black" />
@@ -190,8 +241,8 @@ export default function ProjectsDesktop() {
                 <p className="font-mono text-[8px] text-center font-semibold leading-tight text-black/80">Fetches comments from the YouTube API and conducts fanbase sentiment analysis using VADER.</p>
               </div>
               {/* Text Card */}
-              <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/SentimentPipeline" rotateClass="rotate-[1deg] flex-grow">
-                <div className="inline-flex items-center space-x-1.5 bg-[#FFD860] border-2 border-black rounded px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[1px_1px_0_#000]">
+              <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/SentimentPipeline" rotateClass="rotate-[-1deg] flex-grow">
+                <div className="inline-flex items-center space-x-1.5 bg-[#FF73B5] text-white border-2 border-black rounded px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[1px_1px_0_#000]">
                   <span>NLP Pipeline</span>
                   <span>⚡</span>
                 </div>
@@ -201,30 +252,30 @@ export default function ProjectsDesktop() {
                 </p>
                 <div className="border-t border-dashed border-black/25 pt-2.5 space-y-1">
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span className="text-[#FF73B5] font-bold">✶</span>
                     <span><strong>comments fetch</strong>: grabs 100 comments via API.</span>
                   </div>
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span className="text-[#FF73B5] font-bold">✶</span>
                     <span><strong>sentiment engine</strong>: VADER analyzer for social text.</span>
                   </div>
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span className="text-[#FF73B5] font-bold">✶</span>
                     <span><strong>parquet storage</strong>: outputs tabular parquet files.</span>
                   </div>
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span className="text-[#FF73B5] font-bold">✶</span>
                     <span><strong>key insight</strong>: Mitski fanbase shows higher sadness.</span>
                   </div>
                 </div>
               </ProjectTextCard>
             </div>
 
-            {/* PANEL 2: Open Library */}
-            <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#FFD860] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">
-              <div className="absolute inset-[0] bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
+            {/* PANEL 3: Open Library */}
+            <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#A5CF4E] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">
+              <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
               {/* Visual Sketch */}
-              <div className="w-full bg-white border-3 border-black p-3 rounded-xl shadow-[3px_3px_0_#000] relative rotate-[1.5deg] shrink-0 z-10">
+              <div className="w-full bg-white border-3 border-black p-3 rounded-xl shadow-[3px_3px_0_#000] relative rotate-[-1.5deg] shrink-0">
                 <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-20 h-20 mx-auto mb-1 float-element">
                   <rect x="15" y="25" width="40" height="50" rx="3" fill="#FFD860" />
                   <line x1="22" y1="35" x2="48" y2="35" />
@@ -240,7 +291,7 @@ export default function ProjectsDesktop() {
               </div>
               {/* Text Card */}
               <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/openLibrary" rotateClass="rotate-[-1deg] flex-grow">
-                <div className="inline-flex items-center space-x-1.5 bg-[#FF73B5] text-white border-2 border-black rounded px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[1px_1px_0_#000]">
+                <div className="inline-flex items-center space-x-1.5 bg-[#00A7FE] text-white border-2 border-black rounded px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[1px_1px_0_#000]">
                   <span>ETL Engine</span>
                   <span>⚙️</span>
                 </div>
@@ -250,27 +301,27 @@ export default function ProjectsDesktop() {
                 </p>
                 <div className="border-t border-dashed border-black/25 pt-2.5 space-y-1">
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#FF73B5] font-bold">✶</span>
+                    <span className="text-[#00A7FE] font-bold">✶</span>
                     <span><strong>pagination</strong>: pages search responses dynamically.</span>
                   </div>
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#FF73B5] font-bold">✶</span>
+                    <span className="text-[#00A7FE] font-bold">✶</span>
                     <span><strong>cleaning</strong>: parses missing and nested JSON fields.</span>
                   </div>
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#FF73B5] font-bold">✶</span>
+                    <span className="text-[#00A7FE] font-bold">✶</span>
                     <span><strong>parquet storage</strong>: compressed, schema-aware files.</span>
                   </div>
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#FF73B5] font-bold">✶</span>
+                    <span className="text-[#00A7FE] font-bold">✶</span>
                     <span><strong>pure python</strong>: built using pyarrow and requests.</span>
                   </div>
                 </div>
               </ProjectTextCard>
             </div>
 
-            {/* PANEL 3: F1 Pipeline */}
-            <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#A5CF4E] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">
+            {/* PANEL 4: F1 Pipeline */}
+            <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#FF73B5] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">
               <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
               {/* Visual Sketch */}
               <div className="w-full bg-white border-3 border-black p-3 rounded-xl shadow-[3px_3px_0_#000] relative rotate-[-1.5deg] shrink-0">
@@ -287,8 +338,8 @@ export default function ProjectsDesktop() {
                 <p className="font-mono text-[8px] text-center font-semibold leading-tight text-black/80">End-to-end race telemetry ETL engine pulling FastF1 session details.</p>
               </div>
               {/* Text Card */}
-              <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/f1-pipeline" rotateClass="rotate-[1deg] flex-grow">
-                <div className="inline-flex items-center space-x-1.5 bg-[#00A7FE] text-white border-2 border-black rounded px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[1px_1px_0_#000]">
+              <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/f1-pipeline" rotateClass="rotate-[-1deg] flex-grow">
+                <div className="inline-flex items-center space-x-1.5 bg-[#A5CF4E] border-2 border-black rounded px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[1px_1px_0_#000]">
                   <span>Telemetry</span>
                   <span>📦</span>
                 </div>
@@ -298,71 +349,20 @@ export default function ProjectsDesktop() {
                 </p>
                 <div className="border-t border-dashed border-black/25 pt-2.5 space-y-1">
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
-                    <span><strong>extraction</strong>: pulls live telemetry via FastF1 API.</span>
+                    <span className="text-[#A5CF4E] font-bold">✶</span>
+                    <span><strong>extraction</strong>: pulls telemetry via FastF1 API.</span>
                   </div>
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span className="text-[#A5CF4E] font-bold">✶</span>
                     <span><strong>transformation</strong>: normalizes NaN and DNF records.</span>
                   </div>
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span className="text-[#A5CF4E] font-bold">✶</span>
                     <span><strong>json storage</strong>: stores raw & cleaned JSON formats.</span>
                   </div>
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span className="text-[#A5CF4E] font-bold">✶</span>
                     <span><strong>reporting</strong>: formats Monza 2024 race output.</span>
-                  </div>
-                </div>
-              </ProjectTextCard>
-            </div>
-
-            {/* PANEL 4: IPL Auction */}
-            <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#FF73B5] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">
-              <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
-              {/* Visual Sketch */}
-              <div className="w-full bg-[#9370db] border-3 border-black p-3 rounded-xl shadow-[3px_3px_0_#000] relative rotate-[-1.5deg] shrink-0 h-28 flex items-center justify-center">
-                <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1.8px,transparent_1.8px)] [background-size:12px_12px] opacity-25 pointer-events-none" />
-                <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-16 h-16 float-element">
-                  <g transform="rotate(-30 50 50)">
-                    <rect x="46" y="15" width="8" height="55" rx="2" fill="#FFD860" />
-                    <rect x="48" y="70" width="4" height="15" fill="#a0522d" />
-                  </g>
-                  <circle cx="70" cy="40" r="10" fill="#FF73B5" />
-                  <path d="M63 35 Q70 42 77 35" stroke="black" strokeWidth="2" fill="none" />
-                  <path d="M63 45 Q70 38 77 45" stroke="black" strokeWidth="2" fill="none" />
-                  <g transform="translate(15 45) rotate(45 25 25)">
-                    <rect x="10" y="20" width="30" height="14" rx="2" fill="#00A7FE" />
-                    <rect x="22" y="34" width="6" height="30" fill="#a0522d" />
-                  </g>
-                </svg>
-              </div>
-              {/* Text Card */}
-              <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/ipl-auction" rotateClass="rotate-[-1deg] flex-grow">
-                <div className="inline-flex items-center space-x-1.5 bg-[#A5CF4E] border-2 border-black rounded px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[1px_1px_0_#000]">
-                  <span>OOP Sim</span>
-                  <span>🎨</span>
-                </div>
-                <h3 className="font-bubble text-base sm:text-lg font-black text-black mb-1 uppercase leading-none">IPL AUCTION SIMULATOR</h3>
-                <p className="font-mono text-[9px] font-semibold leading-relaxed mb-3 text-black/85">
-                  An interactive bidding simulation engine built in Python using OOP logic.
-                </p>
-                <div className="border-t border-dashed border-black/25 pt-2.5 space-y-1">
-                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#A5CF4E] font-bold">✶</span>
-                    <span><strong>oop structures</strong>: player and bidding team classes.</span>
-                  </div>
-                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#A5CF4E] font-bold">✶</span>
-                    <span><strong>budget logic</strong>: handles 90 Crore team allocations.</span>
-                  </div>
-                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#A5CF4E] font-bold">✶</span>
-                    <span><strong>unsold filter</strong>: captures and logs passed bids.</span>
-                  </div>
-                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#A5CF4E] font-bold">✶</span>
-                    <span><strong>results report</strong>: generates results summary to txt.</span>
                   </div>
                 </div>
               </ProjectTextCard>
@@ -389,7 +389,7 @@ export default function ProjectsDesktop() {
               style={{ x: springX }}
               className="flex h-full w-[400vw] pointer-events-auto"
             >
-              {/* PANEL 1: Sentiment Analyzer */}
+              {/* PANEL 1: Steam Market Intel */}
               <div className="w-screen h-screen flex-shrink-0 flex items-center justify-center bg-[#00A7FE] p-6 sm:p-12 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none" />
                 
@@ -401,35 +401,38 @@ export default function ProjectsDesktop() {
                       className="w-full max-w-[360px] p-6 bg-white border-3 border-black rounded shadow-[6px_6px_0_rgba(0,0,0,1)] relative rotate-[-2deg] gpu-accelerated"
                     >
                       <div className="absolute top-[-8px] left-[30px] w-12 h-4 paper-tape rotate-[3deg] border-x border-black/10" />
-                      {/* Sentiment SVG sketch */}
+                      {/* Steam SVG sketch */}
                       <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-36 h-36 mx-auto mb-4 float-element gpu-accelerated">
-                        <path d="M20 25 h60 v40 h-20 l-15 15 l-5-15 h-20 z" fill="#FF73B5" />
-                        <circle cx="40" cy="40" r="5" fill="black" />
-                        <circle cx="60" cy="40" r="5" fill="black" />
-                        <path d="M42 52 Q50 58 58 52" stroke="black" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-                        <rect x="25" y="75" width="12" height="15" fill="#A5CF4E" stroke="black" strokeWidth="2" />
-                        <rect x="42" y="70" width="12" height="20" fill="#FFD860" stroke="black" strokeWidth="2" />
-                        <rect x="59" y="80" width="12" height="10" fill="#FF73B5" stroke="black" strokeWidth="2" />
+                        <path d="M55 45 v25 c0 6 25 6 25 0 v-25" fill="#FFD860" stroke="black" strokeWidth="2.5" />
+                        <ellipse cx="67.5" cy="45" rx="12.5" ry="4.5" fill="#FFE28A" stroke="black" strokeWidth="2.5" />
+                        <path d="M55 53 c0 5 25 5 25 0" stroke="black" strokeWidth="2" />
+                        <path d="M55 61 c0 5 25 5 25 0" stroke="black" strokeWidth="2" />
+                        <rect x="15" y="28" width="34" height="22" rx="7" fill="#FF73B5" stroke="black" strokeWidth="2.5" />
+                        <path d="M22 39 h6 m-3 -3 v6" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
+                        <circle cx="39" cy="36" r="2" fill="black" />
+                        <circle cx="43" cy="41" r="2" fill="black" />
+                        <path d="M35 50 c 5 12 18 12 24 5" stroke="black" strokeWidth="2.5" strokeDasharray="3,3" strokeLinecap="round" fill="none" />
+                        <polygon points="59,57 60,52 55,54" fill="black" />
                       </svg>
-                      <h4 className="font-mono font-bold text-xs uppercase text-black/50 text-center mb-1">[sentiment analyzer]</h4>
-                      <p className="font-mono text-[10px] text-center font-semibold leading-snug">Fetches comments from the YouTube API and conducts fanbase sentiment analysis using VADER.</p>
+                      <h4 className="font-mono font-bold text-xs uppercase text-black/50 text-center mb-1">[steam market intel]</h4>
+                      <p className="font-mono text-[10px] text-center font-semibold leading-snug">Processes 27,000+ Steam game records into a production-grade PostgreSQL star schema.</p>
                     </motion.div>
                   </div>
 
                   {/* Right Column: Text card */}
                   <div className="flex flex-col justify-center items-start relative h-full w-full">
-                    <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/SentimentPipeline" rotateClass="rotate-[1.5deg]">
+                    <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/steam-market-intel" rotateClass="rotate-[1.5deg]">
                       <div className="absolute top-[-9px] right-[40px] w-16 h-5 paper-tape rotate-[-5deg] border-x border-black/10 z-20" />
                       
                       {/* Header Pill */}
                       <div className="inline-flex items-center space-x-1.5 bg-[#FFD860] border-2 border-black rounded px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider mb-4 shadow-[2px_2px_0_#000] z-20 relative">
-                        <span>NLP Pipeline</span>
+                        <span>ETL Pipeline</span>
                         <span>⚡</span>
                       </div>
 
                       {/* Text Assembly Header */}
                       <ScatteredWord 
-                        word="SENTIMENT ANALYZER" 
+                        word="STEAM MARKET INTEL" 
                         scrollProgress={scrollYProgress} 
                         triggerRange={[0.0, 0.16, 0.28]} 
                         outputRange={[0.0, 0.0, 1.0]} 
@@ -437,25 +440,25 @@ export default function ProjectsDesktop() {
                       />
 
                       <p className="font-mono text-xs font-semibold leading-relaxed mb-6">
-                        A Python data pipeline crawling real YouTube comments and aggregating sentiment metrics across artists using VADER sentiment analysis.
+                        An end-to-end Python data engineering pipeline processing 27,000+ Steam records into a production-grade PostgreSQL star schema.
                       </p>
 
                       <div className="border-t-2 border-dashed border-black/25 pt-4 space-y-2">
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
                           <span className="text-[#00A7FE] font-bold">✶</span>
-                          <span><strong>comments crawler</strong>: grabs 100 comments via YouTube API v3.</span>
+                          <span><strong>pandas transform</strong>: cleans raw game data using Pandas with custom null-handling and dtype conversions.</span>
                         </div>
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
                           <span className="text-[#00A7FE] font-bold">✶</span>
-                          <span><strong>sentiment analysis</strong>: uses VADER optimized for social media text.</span>
+                          <span><strong>star schema</strong>: creates dim_genre, dim_developer, dim_release, and fact_games with strict DB-level constraints.</span>
                         </div>
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
                           <span className="text-[#00A7FE] font-bold">✶</span>
-                          <span><strong>parquet output</strong>: aggregates average sentiment and saves to Parquet.</span>
+                          <span><strong>idempotency engine</strong>: safe to run multiple times with pre-load checks to prevent duplicate records.</span>
                         </div>
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
                           <span className="text-[#00A7FE] font-bold">✶</span>
-                          <span><strong>fanbase insight</strong>: Mitski fans show high negative scores (sad lyrics).</span>
+                          <span><strong>sqlalchemy loading</strong>: loads transformed tables using SQLAlchemy, parameterized queries, and psycopg2.</span>
                         </div>
                       </div>
                     </ProjectTextCard>
@@ -463,9 +466,8 @@ export default function ProjectsDesktop() {
                 </div>
               </div>
 
-              {/* PANEL 2: Open Library */}
+              {/* PANEL 2: Sentiment Analyzer */}
               <div className="w-screen h-screen flex-shrink-0 flex items-center justify-center bg-[#FFD860] p-6 sm:p-12 relative overflow-hidden">
-                {/* Purified background - no green split */}
                 <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none z-0" />
                 
                 <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full pt-16 pb-12 z-10">
@@ -477,8 +479,84 @@ export default function ProjectsDesktop() {
                     >
                       <div className="absolute top-[-8px] right-[30px] w-12 h-4 paper-tape rotate-[-4deg] border-x border-black/10" />
                       
-                      {/* Library SVG sketch */}
+                      {/* Sentiment SVG sketch */}
                       <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-36 h-36 mx-auto mb-4 float-element gpu-accelerated" style={{ animationDelay: "1s" }}>
+                        <path d="M20 25 h60 v40 h-20 l-15 15 l-5-15 h-20 z" fill="#FF73B5" />
+                        <circle cx="40" cy="40" r="5" fill="black" />
+                        <circle cx="60" cy="40" r="5" fill="black" />
+                        <path d="M42 52 Q50 58 58 52" stroke="black" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                        <rect x="25" y="75" width="12" height="15" fill="#A5CF4E" stroke="black" strokeWidth="2" />
+                        <rect x="42" y="70" width="12" height="20" fill="#FFD860" stroke="black" strokeWidth="2" />
+                        <rect x="59" y="80" width="12" height="10" fill="#FF73B5" stroke="black" strokeWidth="2" />
+                      </svg>
+                      
+                      <h4 className="font-mono font-bold text-xs uppercase text-black/50 text-center mb-1">[sentiment analyzer]</h4>
+                      <p className="font-mono text-[10px] text-center font-semibold leading-snug">Fetches comments from the YouTube API and conducts fanbase sentiment analysis using VADER.</p>
+                    </motion.div>
+                  </div>
+
+                  {/* Right Column: Text card */}
+                  <div className="flex flex-col justify-center items-start h-full w-full">
+                    <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/SentimentPipeline" rotateClass="rotate-[-1deg]">
+                      <div className="absolute top-[-9px] left-[40px] w-16 h-5 paper-tape rotate-[3deg] border-x border-black/10 z-20" />
+                      
+                      {/* Header Pill */}
+                      <div className="inline-flex items-center space-x-1.5 bg-[#FF73B5] text-white border-2 border-black rounded px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider mb-4 shadow-[2px_2px_0_#000] z-20 relative">
+                        <span>NLP Pipeline</span>
+                        <span>⚡</span>
+                      </div>
+
+                      {/* Text Assembly Header */}
+                      <ScatteredWord 
+                        word="SENTIMENT ANALYZER" 
+                        scrollProgress={scrollYProgress} 
+                        triggerRange={[0.08, 0.22, 0.44, 0.56]} 
+                        outputRange={[1.0, 0.0, 0.0, 1.0]} 
+                        sizeClass="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem]"
+                      />
+
+                      <p className="font-mono text-xs font-semibold leading-relaxed mb-6">
+                        A Python data pipeline crawling real YouTube comments and aggregating sentiment metrics across artists using VADER sentiment analysis.
+                      </p>
+
+                      <div className="border-t-2 border-dashed border-black/25 pt-4 space-y-2">
+                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
+                          <span className="text-[#FF73B5] font-bold">✶</span>
+                          <span><strong>comments crawler</strong>: grabs 100 comments via YouTube API v3.</span>
+                        </div>
+                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
+                          <span className="text-[#FF73B5] font-bold">✶</span>
+                          <span><strong>sentiment analysis</strong>: uses VADER optimized for social media text.</span>
+                        </div>
+                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
+                          <span className="text-[#FF73B5] font-bold">✶</span>
+                          <span><strong>parquet output</strong>: aggregates average sentiment and saves to Parquet.</span>
+                        </div>
+                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
+                          <span className="text-[#FF73B5] font-bold">✶</span>
+                          <span><strong>fanbase insight</strong>: Mitski fans show high negative scores (sad lyrics).</span>
+                        </div>
+                      </div>
+                    </ProjectTextCard>
+                  </div>
+                </div>
+              </div>
+
+              {/* PANEL 3: Open Library */}
+              <div className="w-screen h-screen flex-shrink-0 flex items-center justify-center bg-[#A5CF4E] p-6 sm:p-12 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none" />
+                
+                <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full pt-16 pb-12">
+                  {/* Left Column: Visual card */}
+                  <div className="flex justify-center items-center h-full">
+                    <motion.div 
+                      whileHover={{ rotate: 1.5 }}
+                      className="w-full max-w-[360px] p-6 bg-white border-3 border-black rounded shadow-[6px_6px_0_rgba(0,0,0,1)] relative rotate-[-2deg] gpu-accelerated"
+                    >
+                      <div className="absolute top-[-8px] left-[30px] w-12 h-4 paper-tape rotate-[3deg] border-x border-black/10" />
+                      
+                      {/* Library SVG sketch */}
+                      <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-36 h-36 mx-auto mb-4 float-element gpu-accelerated" style={{ animationDelay: "1.5s" }}>
                         <rect x="15" y="25" width="40" height="50" rx="3" fill="#FFD860" />
                         <line x1="22" y1="35" x2="48" y2="35" />
                         <line x1="22" y1="45" x2="48" y2="45" />
@@ -496,11 +574,11 @@ export default function ProjectsDesktop() {
 
                   {/* Right Column: Text card */}
                   <div className="flex flex-col justify-center items-start h-full w-full">
-                    <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/openLibrary" rotateClass="rotate-[-1.5deg]">
-                      <div className="absolute top-[-9px] left-[40px] w-16 h-5 paper-tape rotate-[3deg] border-x border-black/10 z-20" />
+                    <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/openLibrary" rotateClass="rotate-[1.5deg]">
+                      <div className="absolute top-[-9px] right-[40px] w-16 h-5 paper-tape rotate-[-5deg] border-x border-black/10 z-20" />
                       
                       {/* Header Pill */}
-                      <div className="inline-flex items-center space-x-1.5 bg-[#FF73B5] text-white border-2 border-black rounded px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider mb-4 shadow-[2px_2px_0_#000] z-20 relative">
+                      <div className="inline-flex items-center space-x-1.5 bg-[#00A7FE] text-white border-2 border-black rounded px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider mb-4 shadow-[2px_2px_0_#000] z-20 relative">
                         <span>ETL Engine</span>
                         <span>⚙️</span>
                       </div>
@@ -509,7 +587,7 @@ export default function ProjectsDesktop() {
                       <ScatteredWord 
                         word="OPEN LIBRARY PIPELINE" 
                         scrollProgress={scrollYProgress} 
-                        triggerRange={[0.08, 0.22, 0.44, 0.56]} 
+                        triggerRange={[0.33, 0.46, 0.70, 0.82]} 
                         outputRange={[1.0, 0.0, 0.0, 1.0]} 
                         sizeClass="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem]"
                       />
@@ -520,19 +598,19 @@ export default function ProjectsDesktop() {
 
                       <div className="border-t-2 border-dashed border-black/25 pt-4 space-y-2">
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#FF73B5] font-bold">✶</span>
+                          <span className="text-[#00A7FE] font-bold">✶</span>
                           <span><strong>auto pagination</strong>: automatically requests multiple pages of search results.</span>
                         </div>
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#FF73B5] font-bold">✶</span>
+                          <span className="text-[#00A7FE] font-bold">✶</span>
                           <span><strong>data cleaning</strong>: drops unneeded headers and resolves missing/empty fields.</span>
                         </div>
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#FF73B5] font-bold">✶</span>
+                          <span className="text-[#00A7FE] font-bold">✶</span>
                           <span><strong>saving formats</strong>: outputs to CSV as well as optimized schema-aware Parquet.</span>
                         </div>
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#FF73B5] font-bold">✶</span>
+                          <span className="text-[#00A7FE] font-bold">✶</span>
                           <span><strong>pure python de</strong>: zero shortcuts - uses requests, pyarrow, and csv packages.</span>
                         </div>
                       </div>
@@ -541,42 +619,18 @@ export default function ProjectsDesktop() {
                 </div>
               </div>
 
-              {/* PANEL 3: F1 Pipeline */}
-              <div className="w-screen h-screen flex-shrink-0 flex items-center justify-center bg-[#A5CF4E] p-6 sm:p-12 relative overflow-hidden">
+              {/* PANEL 4: F1 Pipeline */}
+              <div className="w-screen h-screen flex-shrink-0 flex items-center justify-center bg-[#FF73B5] p-6 sm:p-12 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none" />
                 
                 <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full pt-16 pb-12">
-                  {/* Left Column: Visual card */}
-                  <div className="flex justify-center items-center h-full">
-                    <motion.div 
-                      whileHover={{ rotate: 1.5 }}
-                      className="w-full max-w-[360px] p-6 bg-white border-3 border-black rounded shadow-[6px_6px_0_rgba(0,0,0,1)] relative rotate-[-2deg] gpu-accelerated"
-                    >
-                      <div className="absolute top-[-8px] left-[30px] w-12 h-4 paper-tape rotate-[3deg] border-x border-black/10" />
-                      
-                      {/* Telemetry Steering Wheel Sketch */}
-                      <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-36 h-36 mx-auto mb-4 float-element gpu-accelerated" style={{ animationDelay: "1.5s" }}>
-                        <circle cx="50" cy="50" r="32" fill="#1c1c1e" stroke="black" strokeWidth="3" />
-                        <circle cx="50" cy="50" r="16" fill="#A5CF4E" stroke="black" strokeWidth="2.5" />
-                        <rect x="46" y="18" width="8" height="16" fill="black" />
-                        <rect x="18" y="46" width="16" height="8" fill="black" />
-                        <rect x="66" y="46" width="16" height="8" fill="black" />
-                        <path d="M20 75 Q35 60 50 70 T80 55" stroke="#FF73B5" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-                        <text x="50" y="53" textAnchor="middle" fill="black" fontSize="9" fontWeight="black" fontFamily="sans-serif">F1</text>
-                      </svg>
-                      
-                      <h4 className="font-mono font-bold text-xs uppercase text-black/50 text-center mb-1">[telemetry etl]</h4>
-                      <p className="font-mono text-[10px] text-center font-semibold leading-snug">Extracts, cleans, and formats Formula 1 race stats dynamically across seasons.</p>
-                    </motion.div>
-                  </div>
-
-                  {/* Right Column: Text card */}
+                  {/* Left Column: visual UI Card */}
                   <div className="flex flex-col justify-center items-start h-full w-full">
-                    <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/f1-pipeline" rotateClass="rotate-[1.5deg]">
-                      <div className="absolute top-[-9px] right-[40px] w-16 h-5 paper-tape rotate-[-5deg] border-x border-black/10 z-20" />
+                    <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/f1-pipeline" rotateClass="rotate-[-1deg]">
+                      <div className="absolute top-[-9px] left-[35px] w-16 h-5 paper-tape rotate-[3deg] border-x border-black/10 z-20" />
                       
                       {/* Header Pill */}
-                      <div className="inline-flex items-center space-x-1.5 bg-[#00A7FE] text-white border-2 border-black rounded px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider mb-4 shadow-[2px_2px_0_#000] z-20 relative">
+                      <div className="inline-flex items-center space-x-1.5 bg-[#A5CF4E] border-2 border-black rounded px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider mb-4 shadow-[2px_2px_0_#000] z-20 relative">
                         <span>Telemetry</span>
                         <span>📦</span>
                       </div>
@@ -585,8 +639,8 @@ export default function ProjectsDesktop() {
                       <ScatteredWord 
                         word="F1 RACE DATA PIPELINE" 
                         scrollProgress={scrollYProgress} 
-                        triggerRange={[0.33, 0.46, 0.70, 0.82]} 
-                        outputRange={[1.0, 0.0, 0.0, 1.0]} 
+                        triggerRange={[0.58, 0.70, 1.0]} 
+                        outputRange={[1.0, 0.0, 0.0]} 
                         sizeClass="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem]"
                       />
 
@@ -596,78 +650,26 @@ export default function ProjectsDesktop() {
 
                       <div className="border-t-2 border-dashed border-black/25 pt-4 space-y-2">
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#00A7FE] font-bold">✶</span>
+                          <span className="text-[#A5CF4E] font-bold">✶</span>
                           <span><strong>extract</strong>: pulls live telemetry and session statistics via FastF1 API.</span>
                         </div>
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#00A7FE] font-bold">✶</span>
+                          <span className="text-[#A5CF4E] font-bold">✶</span>
                           <span><strong>transform</strong>: converts data types, formats times, and normalizes DNF codes.</span>
                         </div>
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#00A7FE] font-bold">✶</span>
+                          <span className="text-[#A5CF4E] font-bold">✶</span>
                           <span><strong>json storage</strong>: writes intermediate states to raw and cleaned JSON files.</span>
                         </div>
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#00A7FE] font-bold">✶</span>
+                          <span className="text-[#A5CF4E] font-bold">✶</span>
                           <span><strong>reporting</strong>: outputs a formatted Monza 2024 summary text report.</span>
                         </div>
                       </div>
                     </ProjectTextCard>
                   </div>
-                </div>
-              </div>
 
-              {/* PANEL 4: IPL Auction */}
-              <div className="w-screen h-screen flex-shrink-0 flex items-center justify-center bg-[#FF73B5] p-6 sm:p-12 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none" />
-                
-                <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full pt-16 pb-12">
-                  {/* Left Column: visual UI Card */}
-                  <div className="flex flex-col justify-center items-start h-full w-full">
-                    <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/ipl-auction" rotateClass="rotate-[-1.5deg]">
-                      <div className="absolute top-[-9px] left-[35px] w-16 h-5 paper-tape rotate-[3deg] border-x border-black/10 z-20" />
-                      
-                      {/* Header Pill */}
-                      <div className="inline-flex items-center space-x-1.5 bg-[#A5CF4E] border-2 border-black rounded px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider mb-4 shadow-[2px_2px_0_#000] z-20 relative">
-                        <span>OOP Sim</span>
-                        <span>🎨</span>
-                      </div>
-
-                      {/* Text Assembly Header */}
-                      <ScatteredWord 
-                        word="IPL AUCTION SIMULATOR" 
-                        scrollProgress={scrollYProgress} 
-                        triggerRange={[0.58, 0.70, 1.0]} 
-                        outputRange={[1.0, 0.0, 0.0]} 
-                        sizeClass="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem]"
-                      />
-
-                      <p className="font-mono text-xs font-semibold leading-relaxed mb-6">
-                        An interactive IPL bidding simulation game built in Python using Object-Oriented Programming (OOP) to bid and manage squad budgets.
-                      </p>
-
-                      <div className="border-t-2 border-dashed border-black/25 pt-4 space-y-2">
-                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#A5CF4E] font-bold">✶</span>
-                          <span><strong>oop architecture</strong>: modular structures mapping players, teams, and bidding.</span>
-                        </div>
-                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#A5CF4E] font-bold">✶</span>
-                          <span><strong>budget management</strong>: checks and updates 90 Crore team budgets in sequence.</span>
-                        </div>
-                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#A5CF4E] font-bold">✶</span>
-                          <span><strong>unsold filter</strong>: automatically catches skipped players for future rounds.</span>
-                        </div>
-                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#A5CF4E] font-bold">✶</span>
-                          <span><strong>auction summary</strong>: writes complete team lists and final squad reports to txt.</span>
-                        </div>
-                      </div>
-                    </ProjectTextCard>
-                  </div>
-
-                  {/* Right Column: Interactive Auction Board Simulation */}
+                  {/* Right Column: Interactive Whiteboard Simulation */}
                   <div className="flex justify-center items-center h-full relative">
                     {/* Whiteboard Circle */}
                     <div className="w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] rounded-full border-4 border-black bg-[#9370db] relative overflow-hidden shadow-[8px_8px_0_rgba(0,0,0,1)] flex items-center justify-center gpu-accelerated">
@@ -677,69 +679,68 @@ export default function ProjectsDesktop() {
                       
                       {/* Whiteboard Elements */}
                       
-                      {/* Connecting lines */}
+                      {/* Connecting lines - Dotted Track Loop */}
                       <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-white stroke-[2] fill-none stroke-dasharray-[4,4] z-10">
-                        {/* Line 1 */}
-                        <path d="M70,80 Q150,110 180,180" />
-                        {/* Line 2 */}
-                        <path d="M210,100 Q200,160 190,190" />
+                        <path d="M100 150 C 100 80, 300 80, 300 150 C 300 220, 200 220, 200 280 C 200 340, 100 340, 100 150 Z" />
                       </svg>
 
-                      {/* Green Rectangle (Auction Board title) */}
+                      {/* Green Rectangle (F1 Board title) */}
                       <motion.div 
                         initial={{ x: -10, y: -80 }}
                         className="absolute z-20 bg-[#A5CF4E] border-2 border-black w-24 h-12 flex items-center justify-center rounded text-[10px] font-mono font-bold shadow-[3px_3px_0_#000] rotate-[-5deg] gpu-accelerated"
                       >
-                        <span>IPL Auction</span>
+                        <span>F1 Telemetry</span>
                       </motion.div>
 
-                      {/* Yellow Sticky Note (Bidding status) */}
+                      {/* Yellow Sticky Note (Lap stats) */}
                       <motion.div 
                         initial={{ x: 30, y: 50 }}
                         className="absolute z-20 bg-[#FFD860] border-2 border-black w-20 h-20 p-2 flex flex-col justify-between rounded shadow-[3px_3px_0_#000] rotate-[8deg] gpu-accelerated"
                       >
-                        <span className="font-mono text-[8px] font-bold leading-tight block uppercase">bid log:</span>
-                        <span className="font-mono text-[9px] leading-tight block">Virat Kohli (RCB: 3.5Cr)</span>
+                        <span className="font-mono text-[8px] font-bold leading-tight block uppercase">telemetry:</span>
+                        <span className="font-mono text-[9px] leading-tight block">LEC: 1:21.432 (L42)</span>
                       </motion.div>
 
-                      {/* Blue Cross (Auction gavel / icon) */}
+                      {/* Blue Steering Wheel Icon */}
                       <motion.div 
                         whileHover={{ scale: 1.15, rotate: 15 }}
                         initial={{ x: 60, y: -60 }}
                         className="absolute z-20 w-16 h-16 cursor-pointer pointer-events-auto gpu-accelerated"
                       >
                         <svg viewBox="0 0 100 100" fill="#00A7FE" stroke="black" strokeWidth="4">
-                          <rect x="15" y="40" width="70" height="20" rx="3" />
-                          <rect x="42" y="60" width="16" height="30" />
-                          <circle cx="50" cy="50" r="6" fill="white" />
+                          <circle cx="50" cy="50" r="32" fill="#1c1c1e" stroke="black" strokeWidth="3" />
+                          <circle cx="50" cy="50" r="16" fill="#A5CF4E" stroke="black" strokeWidth="2.5" />
+                          <rect x="46" y="18" width="8" height="16" fill="black" />
+                          <rect x="18" y="46" width="16" height="8" fill="black" />
+                          <rect x="66" y="46" width="16" height="8" fill="black" />
                         </svg>
                       </motion.div>
 
-                      {/* Multiplayer Cursor 1: RCB */}
+                      {/* Multiplayer Driver 1: Hamilton */}
                       {!isSlow && (
                         <motion.div 
                           variants={cursor1Variants}
                           animate="animate"
                           className="absolute z-30 flex items-center space-x-1 pointer-events-none gpu-accelerated"
                         >
-                          <svg className="w-5 h-5 text-red-500 fill-current drop-shadow" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 text-teal-400 fill-current drop-shadow" viewBox="0 0 24 24">
                             <path d="M4 2v18l5-5h8l-13-13z" />
                           </svg>
-                          <span className="bg-red-500 text-white font-mono font-bold text-[8px] px-1 rounded shadow">rcb (bidder)</span>
+                          <span className="bg-teal-500 text-white font-mono font-bold text-[8px] px-1 rounded shadow">ham (mercedes)</span>
                         </motion.div>
                       )}
 
-                      {/* Multiplayer Cursor 2: CSK */}
+                      {/* Multiplayer Driver 2: Verstappen */}
                       {!isSlow && (
                         <motion.div 
                           variants={cursor2Variants}
                           animate="animate"
                           className="absolute z-30 flex items-center space-x-1 pointer-events-none gpu-accelerated"
                         >
-                          <svg className="w-5 h-5 text-indigo-500 fill-current drop-shadow" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 text-red-500 fill-current drop-shadow" viewBox="0 0 24 24">
                             <path d="M4 2v18l5-5h8l-13-13z" />
                           </svg>
-                          <span className="bg-indigo-500 text-white font-mono font-bold text-[8px] px-1 rounded shadow">csk (bidder)</span>
+                          <span className="bg-red-600 text-white font-mono font-bold text-[8px] px-1 rounded shadow">ver (red bull)</span>
                         </motion.div>
                       )}
 
