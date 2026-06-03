@@ -323,9 +323,16 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
     }, 850);
   };
 
-  // Warp pipe positions for warp actions
-  const leftWarpX = -260;
-  const rightWarpX = 260;
+  // Warp pipe positions for warp actions (calculated dynamically based on viewport width)
+  const getWarpPositions = () => {
+    if (typeof window === 'undefined') return { left: -260, right: 260 };
+    const halfWidth = window.innerWidth / 2;
+    // The WARP pipe center is at 116px from each screen edge (12px padding + 64px width of 1st pipe + 8px space + 32px half of 2nd pipe)
+    return {
+      left: -halfWidth + 116,
+      right: halfWidth - 116
+    };
+  };
 
   // Warp trigger animation sequence
   const executeWarp = async (fromLeft) => {
@@ -340,8 +347,10 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
     keysPressed.current.jump = false;
     phys.marioVy = 0;
 
+    const warpPos = getWarpPositions();
+
     // Phase 1: Slide down into pipe
-    let targetX = fromLeft ? leftWarpX : rightWarpX;
+    let targetX = fromLeft ? warpPos.left : warpPos.right;
     phys.marioX = targetX;
     marioXMVal.set(targetX);
     
@@ -368,7 +377,7 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
         requestAnimationFrame(animateDown);
       } else {
         // Phase 2: Teleport Mario to the other pipe, still submerged
-        const nextX = fromLeft ? rightWarpX : leftWarpX;
+        const nextX = fromLeft ? warpPos.right : warpPos.left;
         phys.marioX = nextX;
         marioXMVal.set(nextX);
         
@@ -485,10 +494,11 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
         keysPressed.current.down = true;
         
         // Trigger warp sequence
-        if (phys.marioY === 0) {
-          if (Math.abs(phys.marioX - leftWarpX) < 22) {
+        const warpPos = getWarpPositions();
+        if (Math.abs(phys.marioY) < 1) {
+          if (Math.abs(phys.marioX - warpPos.left) < 45) {
             executeWarp(true);
-          } else if (Math.abs(phys.marioX - rightWarpX) < 22) {
+          } else if (Math.abs(phys.marioX - warpPos.right) < 45) {
             executeWarp(false);
           }
         }
@@ -815,7 +825,8 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
       if (particleSpawnCounter >= particleLimit) {
         particleSpawnCounter = 0;
         const spawnLeft = Math.random() > 0.5;
-        const spawnX = spawnLeft ? -260 : 260;
+        const warpPos = getWarpPositions();
+        const spawnX = spawnLeft ? warpPos.left : warpPos.right;
         const spawnY = -70; // pipe mouth
 
         const pId = Date.now() + Math.random();

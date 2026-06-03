@@ -112,6 +112,37 @@ const WarehouseAvatar = () => (
   </svg>
 );
 
+const RedshiftAvatar = () => (
+  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
+    {/* Red Database Stack */}
+    <path d="M25 35 v12 c0 6 50 6 50 0 v-12" fill="#b91c1c" stroke="#1c1c1e" strokeWidth="2.5" />
+    <path d="M25 55 v12 c0 6 50 6 50 0 v-12" fill="#b91c1c" stroke="#1c1c1e" strokeWidth="2.5" />
+    
+    <ellipse cx="50" cy="35" rx="25" ry="6" fill="#ef4444" stroke="#1c1c1e" strokeWidth="2.5" />
+    <ellipse cx="50" cy="55" rx="25" ry="6" fill="#ef4444" stroke="#1c1c1e" strokeWidth="2.5" />
+    
+    {/* Connection lines / details */}
+    <path d="M25 41 c0 5 50 5 50 0" stroke="#1c1c1e" strokeWidth="1.5" />
+    <path d="M25 61 c0 5 50 5 50 0" stroke="#1c1c1e" strokeWidth="1.5" />
+    
+    {/* Face on the top cylinder */}
+    <circle cx="42" cy="35" r="2.2" fill="#1c1c1e" />
+    <circle cx="58" cy="35" r="2.2" fill="#1c1c1e" />
+    <path d="M46 39 Q50 41 54 39" stroke="#1c1c1e" strokeWidth="1.5" strokeLinecap="round" />
+    
+    {/* Ascending Arrow block */}
+    <motion.path 
+      d="M50 15 L58 23 H53 V29 H47 V23 H42 Z" 
+      fill="#ffd860" 
+      stroke="#1c1c1e" 
+      strokeWidth="2" 
+      strokeLinejoin="miter"
+      animate={{ y: [-2, 2, -2] }}
+      transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+    />
+  </svg>
+);
+
 export default function SkillsMeet() {
   const [micActive, setMicActive] = useState(true);
   const [camActive, setCamActive] = useState(true);
@@ -140,7 +171,7 @@ export default function SkillsMeet() {
     if (!isMobile || isSlow) return;
     
     const interval = setInterval(() => {
-      const skills = ["Python", "Postgres", "Airflow", "GCP / Cloud", "PySpark", "Warehousing"];
+      const skills = ["Python", "Postgres", "Airflow", "GCP / Cloud", "PySpark", "Warehousing", "Redshift"];
       const randomSkill = skills[Math.floor(Math.random() * skills.length)];
       setHoveredCard(randomSkill);
       
@@ -238,12 +269,13 @@ export default function SkillsMeet() {
   };
 
   const skillsList = [
-    { name: "Python", bg: "bg-[#00A7FE]", component: <PythonAvatar />, reaction: "🐍" },
-    { name: "Postgres", bg: "bg-[#FFD860]", component: <PostgresAvatar />, reaction: "🐘" },
-    { name: "Airflow", bg: "bg-[#FF73B5]", component: <AirflowAvatar />, reaction: "🌀" },
-    { name: "GCP / Cloud", bg: "bg-[#A5CF4E]", component: <CloudAvatar />, reaction: "☁️" },
-    { name: "PySpark", bg: "bg-[#9370db]", component: <SparkAvatar />, reaction: "✨" },
-    { name: "Warehousing", bg: "bg-[#ffa500]", component: <WarehouseAvatar />, reaction: "📦" },
+    { name: "Python", bg: "bg-[#00A7FE]", component: <PythonAvatar />, reaction: "🐍", gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "Postgres", bg: "bg-[#FFD860]", component: <PostgresAvatar />, reaction: "🐘", gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "Airflow", bg: "bg-[#FF73B5]", component: <AirflowAvatar />, reaction: "🌀", gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "GCP / Cloud", bg: "bg-[#A5CF4E]", component: <CloudAvatar />, reaction: "☁️", gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "PySpark", bg: "bg-[#9370db]", component: <SparkAvatar />, reaction: "✨", gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { name: "Warehousing", bg: "bg-[#ffa500]", component: <WarehouseAvatar />, reaction: "📦", gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { name: "Redshift", bg: "bg-[#ef4444]", component: <RedshiftAvatar />, reaction: "⚡", gridClass: "col-span-12 sm:col-span-12 lg:col-span-4" },
   ];
 
   // Letters of SKILLS! title
@@ -293,8 +325,8 @@ export default function SkillsMeet() {
         </AnimatePresence>
       </div>
 
-      {/* 2. 3x2 Video Call Participant Grid (Step 3 in sequence) */}
-      <div ref={gridRef} className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 px-2 sm:px-6 md:px-8 z-10 mb-28 md:mb-16 min-h-[380px]">
+      {/* 2. Google Meet Participant Grid (Step 3 in sequence: 4 up, 3 down) */}
+      <div ref={gridRef} className="w-full max-w-5xl grid grid-cols-12 gap-4 md:gap-6 px-2 sm:px-6 md:px-8 z-10 mb-28 md:mb-16 min-h-[380px]">
         <AnimatePresence>
           {showCards && (
             <>
@@ -307,7 +339,7 @@ export default function SkillsMeet() {
                   transition={{ type: "spring", stiffness: 260, damping: 20, delay: idx * 0.08 }}
                   onMouseEnter={() => setHoveredCard(skill.name)}
                   onMouseLeave={() => setHoveredCard(null)}
-                  className="relative rounded-2xl overflow-hidden aspect-[16/10] border-2 border-black shadow-2xl flex items-center justify-center cursor-pointer group"
+                  className={`relative rounded-2xl overflow-hidden aspect-[16/10] border-2 border-black shadow-2xl flex items-center justify-center cursor-pointer group ${skill.gridClass}`}
                 >
                   <div className={`absolute inset-0 ${skill.bg} transition-transform duration-300 group-hover:scale-105`} />
                   <div className="absolute inset-0 bg-[radial-gradient(#1c1c1c_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
