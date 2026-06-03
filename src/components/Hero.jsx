@@ -1076,16 +1076,25 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
           rotateY,
           transformStyle: "preserve-3d",
         }}
-        className="absolute inset-0 flex flex-col items-center justify-center select-none z-20 w-full px-4 space-y-6"
+        className="absolute inset-0 flex flex-col items-center justify-center select-none z-20 w-full px-4 space-y-6 pointer-events-none"
       >
         {/* Desktop: Above Card */}
         {!isMobile && (
           <motion.a
             href="/resume.pdf"
             download="Dhruv_Saini_Data_Engineer_Resume.pdf"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-2 bg-[#A5CF4E] border-3 border-black px-5 py-2.5 rounded font-mono font-black text-xs sm:text-sm text-black shadow-[3px_3px_0_#000] hover:shadow-[5px_5px_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_#000] transition-all cursor-pointer pointer-events-auto z-30"
+            whileHover={{ 
+              scale: 1.05, 
+              y: -2,
+              boxShadow: "5px 5px 0px #000"
+            }}
+            whileTap={{ 
+              scale: 0.98, 
+              x: 2, 
+              y: 2,
+              boxShadow: "1px 1px 0px #000" 
+            }}
+            className="inline-flex items-center space-x-2 bg-[#A5CF4E] border-3 border-black px-5 py-2.5 rounded font-mono font-black text-xs sm:text-sm text-black shadow-[3px_3px_0_#000] cursor-pointer pointer-events-auto z-30"
             style={{ transform: "translateZ(100px)" }}
           >
             <span>DOWNLOAD RESUME</span>
@@ -1110,7 +1119,7 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
             ease: "easeOut"
           }}
           whileHover={{ scale: 1.03, rotate: 1, transition: { duration: 0.2 } }}
-          className="p-8 sm:p-12 bg-white border-4 border-black text-black rounded-2xl shadow-[8px_8px_0px_rgba(0,0,0,1)] relative cursor-default flex flex-col items-center justify-center"
+          className="p-8 sm:p-12 bg-white border-4 border-black text-black rounded-2xl shadow-[8px_8px_0px_rgba(0,0,0,1)] relative cursor-default flex flex-col items-center justify-center pointer-events-auto"
           style={{ 
             transform: "translateZ(80px)",
           }}
@@ -1129,9 +1138,18 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
           <motion.a
             href="/resume.pdf"
             download="Dhruv_Saini_Data_Engineer_Resume.pdf"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-2 bg-[#A5CF4E] border-3 border-black px-5 py-2.5 rounded font-mono font-black text-xs sm:text-sm text-black shadow-[3px_3px_0_#000] hover:shadow-[5px_5px_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_#000] transition-all cursor-pointer pointer-events-auto z-30"
+            whileHover={{ 
+              scale: 1.05, 
+              y: -2,
+              boxShadow: "5px 5px 0px #000"
+            }}
+            whileTap={{ 
+              scale: 0.98, 
+              x: 2, 
+              y: 2,
+              boxShadow: "1px 1px 0px #000" 
+            }}
+            className="inline-flex items-center space-x-2 bg-[#A5CF4E] border-3 border-black px-5 py-2.5 rounded font-mono font-black text-xs sm:text-sm text-black shadow-[3px_3px_0_#000] cursor-pointer pointer-events-auto z-30"
           >
             <span>DOWNLOAD RESUME</span>
             <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">

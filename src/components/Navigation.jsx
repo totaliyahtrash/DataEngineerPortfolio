@@ -301,9 +301,20 @@ export default function Navigation({ setMarioTriggered }) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    y: -1,
+                    boxShadow: "3.5px 3.5px 0px #000"
+                  }}
+                  whileTap={{ 
+                    scale: 0.95,
+                    x: 1,
+                    y: 1,
+                    boxShadow: "0.5px 0.5px 0px #000"
+                  }}
                   href="/resume.pdf" 
                   download="Dhruv_Saini_Resume.pdf"
-                  className="bg-[#A5CF4E] text-black border-2 border-black px-3.5 py-1 rounded-full font-mono font-black text-[9px] tracking-tight shadow-[2px_2px_0_#000] hover:shadow-[1.5px_1.5px_0_#000] hover:translate-x-[0.5px] hover:translate-y-[0.5px] active:translate-x-[1.5px] active:translate-y-[1.5px] active:shadow-none transition-all ml-3 shrink-0 uppercase cursor-pointer"
+                  className="bg-[#A5CF4E] text-black border-2 border-black px-3.5 py-1 rounded-full font-mono font-black text-[9px] tracking-tight shadow-[2px_2px_0_#000] ml-3 shrink-0 uppercase cursor-pointer"
                 >
                   resume
                 </motion.a>
