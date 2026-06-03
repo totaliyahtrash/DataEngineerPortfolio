@@ -143,6 +143,108 @@ const RedshiftAvatar = () => (
   </svg>
 );
 
+const PythonReaction = () => (
+  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+    <path 
+      d="M8 12c0-3 3-5 6-5s6 2 6 5v6c0 3-3 5-6 5s-6-2-6-5v-6z" 
+      fill="#22c55e" 
+      stroke="#1c1c1e" 
+      strokeWidth="2.5" 
+    />
+    <path 
+      d="M14 23c0 2 2 3 4 3s4-1 4-3v-6" 
+      stroke="#22c55e" 
+      strokeWidth="4" 
+      strokeLinecap="round"
+    />
+    <path 
+      d="M14 23c0 2 2 3 4 3s4-1 4-3v-6" 
+      stroke="#1c1c1e" 
+      strokeWidth="2" 
+      strokeLinecap="round"
+    />
+    <circle cx="11.5" cy="11.5" r="1.2" fill="#1c1c1e" />
+    <circle cx="16.5" cy="11.5" r="1.2" fill="#1c1c1e" />
+    <path d="M14 15v3" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
+const PostgresReaction = () => (
+  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+    <ellipse cx="8" cy="15" rx="5" ry="7" fill="#60a5fa" stroke="#1c1c1e" strokeWidth="2" />
+    <ellipse cx="24" cy="15" rx="5" ry="7" fill="#60a5fa" stroke="#1c1c1e" strokeWidth="2" />
+    <circle cx="16" cy="16" r="7" fill="#3b82f6" stroke="#1c1c1e" strokeWidth="2" />
+    <circle cx="13.5" cy="14.5" r="1" fill="#1c1c1e" />
+    <circle cx="18.5" cy="14.5" r="1" fill="#1c1c1e" />
+    <path d="M16 19v4c0 1.5 1 2 2.5 1.5" stroke="#1c1c1e" strokeWidth="2" strokeLinecap="round" fill="none" />
+    <path d="M11 18l-2.5 2M21 18l2.5 2" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" />
+    <path d="M11 18l-2.5 2M21 18l2.5 2" stroke="#1c1c1e" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
+const AirflowReaction = () => (
+  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+    <path 
+      d="M6 10h12a4 4 0 014 4v0a4 4 0 01-4 4H10a4 4 0 00-4 4v0a4 4 0 004 4h16" 
+      stroke="#38bdf8" 
+      strokeWidth="4" 
+      strokeLinecap="round" 
+    />
+    <path 
+      d="M6 10h12a4 4 0 014 4v0a4 4 0 01-4 4H10a4 4 0 00-4 4v0a4 4 0 004 4h16" 
+      stroke="#1c1c1e" 
+      strokeWidth="2.2" 
+      strokeLinecap="round" 
+    />
+  </svg>
+);
+
+const CloudReaction = () => (
+  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+    <path 
+      d="M9 20a4 4 0 01-1-7.87 6 6 0 0111.74-1.78 4 4 0 015.65 4.8A4 4 0 0123 20H9z" 
+      fill="#a5f3fc" 
+      stroke="#1c1c1e" 
+      strokeWidth="2.2" 
+      strokeLinejoin="round" 
+    />
+    <circle cx="12" cy="15" r="1" fill="#1c1c1e" />
+    <circle cx="16" cy="15" r="1" fill="#1c1c1e" />
+  </svg>
+);
+
+const SparkReaction = () => (
+  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+    <path 
+      d="M16 4l3.5 8.5L28 16l-8.5 3.5L16 28l-3.5-8.5L4 16l8.5-3.5Z" 
+      fill="#facc15" 
+      stroke="#1c1c1e" 
+      strokeWidth="2.2" 
+      strokeLinejoin="round" 
+    />
+  </svg>
+);
+
+const WarehouseReaction = () => (
+  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+    <rect x="6" y="8" width="20" height="18" rx="2" fill="#fb923c" stroke="#1c1c1e" strokeWidth="2.2" />
+    <path d="M6 14h20M16 14v12" stroke="#1c1c1e" strokeWidth="2.2" />
+    <rect x="13" y="11" width="6" height="6" fill="#fdba74" stroke="#1c1c1e" strokeWidth="1.5" />
+  </svg>
+);
+
+const RedshiftReaction = () => (
+  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+    <path 
+      d="M19 4L7 18h8v10l12-14h-8Z" 
+      fill="#ef4444" 
+      stroke="#1c1c1e" 
+      strokeWidth="2.2" 
+      strokeLinejoin="round" 
+    />
+  </svg>
+);
+
 export default function SkillsMeet() {
   const [micActive, setMicActive] = useState(true);
   const [camActive, setCamActive] = useState(true);
@@ -269,13 +371,13 @@ export default function SkillsMeet() {
   };
 
   const skillsList = [
-    { name: "Python", bg: "bg-[#00A7FE]", component: <PythonAvatar />, reaction: "🐍", gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "Postgres", bg: "bg-[#FFD860]", component: <PostgresAvatar />, reaction: "🐘", gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "Airflow", bg: "bg-[#FF73B5]", component: <AirflowAvatar />, reaction: "🌀", gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "GCP / Cloud", bg: "bg-[#A5CF4E]", component: <CloudAvatar />, reaction: "☁️", gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "PySpark", bg: "bg-[#9370db]", component: <SparkAvatar />, reaction: "✨", gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
-    { name: "Warehousing", bg: "bg-[#ffa500]", component: <WarehouseAvatar />, reaction: "📦", gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
-    { name: "Redshift", bg: "bg-[#ef4444]", component: <RedshiftAvatar />, reaction: "⚡", gridClass: "col-span-12 sm:col-span-12 lg:col-span-4" },
+    { name: "Python", bg: "bg-[#00A7FE]", component: <PythonAvatar />, reaction: <PythonReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "Postgres", bg: "bg-[#FFD860]", component: <PostgresAvatar />, reaction: <PostgresReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "Airflow", bg: "bg-[#FF73B5]", component: <AirflowAvatar />, reaction: <AirflowReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "GCP / Cloud", bg: "bg-[#A5CF4E]", component: <CloudAvatar />, reaction: <CloudReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "PySpark", bg: "bg-[#9370db]", component: <SparkAvatar />, reaction: <SparkReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { name: "Warehousing", bg: "bg-[#ffa500]", component: <WarehouseAvatar />, reaction: <WarehouseReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { name: "Redshift", bg: "bg-[#ef4444]", component: <RedshiftAvatar />, reaction: <RedshiftReaction />, gridClass: "col-span-12 sm:col-span-12 lg:col-span-4" },
   ];
 
   // Letters of SKILLS! title

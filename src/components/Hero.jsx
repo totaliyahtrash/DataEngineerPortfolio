@@ -303,7 +303,8 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
     isMarioDead: false,
     isReviving: false,
     deathTimer: 0,
-    reviveEndTime: 0
+    reviveEndTime: 0,
+    currentPlatformId: null
   });
 
   // Spawns float indicators
@@ -334,6 +335,20 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
     };
   };
 
+  // Pipe platforms to stand on (calculated dynamically)
+  const getPlatforms = () => {
+    if (typeof window === 'undefined') return [];
+    const halfWidth = window.innerWidth / 2;
+    return [
+      { id: 'left-data', xMin: -halfWidth + 12, xMax: -halfWidth + 76, yLevel: -40 },
+      { id: 'left-warp', xMin: -halfWidth + 84, xMax: -halfWidth + 148, yLevel: -70 },
+      { id: 'left-ingest', xMin: -halfWidth + 156, xMax: -halfWidth + 220, yLevel: -100 },
+      { id: 'right-sys', xMin: halfWidth - 76, xMax: halfWidth - 12, yLevel: -40 },
+      { id: 'right-warp', xMin: halfWidth - 148, xMax: halfWidth - 84, yLevel: -70 },
+      { id: 'right-stream', xMin: halfWidth - 220, xMax: halfWidth - 156, yLevel: -100 }
+    ];
+  };
+
   // Warp trigger animation sequence
   const executeWarp = async (fromLeft) => {
     const phys = physicsRef.current;
@@ -362,7 +377,7 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
     addScorePopup("WARPING...", targetX, -80);
 
     const slideDuration = 400;
-    const startY = 0;
+    const startY = phys.marioY;
     const endY = 80;
     const startTime = performance.now();
 
@@ -401,6 +416,11 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
           } else {
             phys.isWarping = false;
             setIsWarping(false);
+            if (startY < -30) {
+              phys.currentPlatformId = fromLeft ? 'right-warp' : 'left-warp';
+            } else {
+              phys.currentPlatformId = null;
+            }
           }
         };
         requestAnimationFrame(animateUp);
@@ -493,12 +513,16 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
         e.preventDefault();
         keysPressed.current.down = true;
         
-        // Trigger warp sequence
+        // Trigger warp sequence (either standing on ground in front of it or on top of it)
         const warpPos = getWarpPositions();
-        if (Math.abs(phys.marioY) < 1) {
-          if (Math.abs(phys.marioX - warpPos.left) < 45) {
+        const isNearLeftWarp = Math.abs(phys.marioX - warpPos.left) < 45;
+        const isNearRightWarp = Math.abs(phys.marioX - warpPos.right) < 45;
+        const isOnWarpSurface = Math.abs(phys.marioY) < 1 || Math.abs(phys.marioY - (-70)) < 2;
+        
+        if (isOnWarpSurface) {
+          if (isNearLeftWarp) {
             executeWarp(true);
-          } else if (Math.abs(phys.marioX - warpPos.right) < 45) {
+          } else if (isNearRightWarp) {
             executeWarp(false);
           }
         }
@@ -556,6 +580,7 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
           setReviveCountdown(10);
           phys.marioX = -220;
           phys.marioY = 0;
+          phys.currentPlatformId = null;
           marioXMVal.set(-220);
           marioYMVal.set(0);
         }
@@ -581,6 +606,7 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
           phys.marioY = 0;
           phys.marioVy = 0;
           phys.isJumping = false;
+          phys.currentPlatformId = null;
           phys.isInvulnerable = true;
           setIsInvulnerable(true);
           phys.invulnCooldown = 120;
@@ -627,28 +653,66 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
 
           // 2. Mario Jumping Physics
           if (phys.isJumping) {
+            const prevY = phys.marioY;
             phys.marioY += phys.marioVy;
             phys.marioVy += gravity;
 
             checkCollisions(phys.marioX, phys.marioY, phys.marioVy);
 
-            // Ground boundaries check
-            if (phys.marioY >= 0) {
-              phys.marioY = 0;
-              phys.marioVy = 0;
-              phys.isJumping = false;
-              
-              if (currentAnimStateRef.current !== 'idle') {
-                currentAnimStateRef.current = 'idle';
-                setMarioAnimState('idle');
+            // Platform collision detection (only when moving down)
+            let landed = false;
+            if (phys.marioVy > 0) {
+              const platforms = getPlatforms();
+              for (const plat of platforms) {
+                if (phys.marioX >= plat.xMin && phys.marioX <= plat.xMax) {
+                  // Check if feet crossed the platform top
+                  if (prevY <= plat.yLevel && phys.marioY >= plat.yLevel) {
+                    phys.marioY = plat.yLevel;
+                    phys.marioVy = 0;
+                    phys.isJumping = false;
+                    phys.currentPlatformId = plat.id;
+                    landed = true;
+                    if (currentAnimStateRef.current !== 'idle') {
+                      currentAnimStateRef.current = 'idle';
+                      setMarioAnimState('idle');
+                    }
+                    break;
+                  }
+                }
               }
-            } else {
-              if (currentAnimStateRef.current !== 'jump') {
-                currentAnimStateRef.current = 'jump';
-                setMarioAnimState('jump');
+            }
+
+            if (!landed) {
+              // Ground boundaries check
+              if (phys.marioY >= 0) {
+                phys.marioY = 0;
+                phys.marioVy = 0;
+                phys.isJumping = false;
+                phys.currentPlatformId = null;
+                
+                if (currentAnimStateRef.current !== 'idle') {
+                  currentAnimStateRef.current = 'idle';
+                  setMarioAnimState('idle');
+                }
+              } else {
+                if (currentAnimStateRef.current !== 'jump') {
+                  currentAnimStateRef.current = 'jump';
+                  setMarioAnimState('jump');
+                }
               }
             }
           } else {
+            // Check if walking off platform
+            if (phys.currentPlatformId) {
+              const platforms = getPlatforms();
+              const plat = platforms.find(p => p.id === phys.currentPlatformId);
+              if (!plat || phys.marioX < plat.xMin || phys.marioX > plat.xMax) {
+                phys.currentPlatformId = null;
+                phys.isJumping = true;
+                phys.marioVy = 0; // fall down
+              }
+            }
+
             if (keys.jump) {
               phys.isJumping = true;
               phys.marioVy = phys.isSuper ? -14.5 : -11.5;
