@@ -556,7 +556,7 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
 
     let active = true;
     const gravity = 0.55;
-    const walkSpeed = 5.2;
+    const walkSpeed = 3.5;
     let particleSpawnCounter = 0;
 
     const gameLoop = () => {
