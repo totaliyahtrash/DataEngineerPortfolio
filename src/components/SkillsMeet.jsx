@@ -143,6 +143,26 @@ const RedshiftAvatar = () => (
   </svg>
 );
 
+const PowerBIAvatar = () => (
+  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
+    {/* Neobrutalist Power BI Bars */}
+    {/* Bar 1 (Shortest, Yellow-Gold) */}
+    <rect x="25" y="55" width="12" height="25" rx="1.5" fill="#f2c811" stroke="#1c1c1e" strokeWidth="2.5" />
+    {/* Bar 2 (Medium, Yellow-Orange) */}
+    <rect x="44" y="38" width="12" height="42" rx="1.5" fill="#f2a900" stroke="#1c1c1e" strokeWidth="2.5" />
+    {/* Bar 3 (Tallest, Dark Orange) */}
+    <rect x="63" y="20" width="12" height="60" rx="1.5" fill="#e07c00" stroke="#1c1c1e" strokeWidth="2.5" />
+
+    {/* Highlight details on bars */}
+    <path d="M29 59 v17 M48 42 v34 M67 24 v52" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" opacity="0.4" />
+    
+    {/* Cute face on the tallest bar */}
+    <circle cx="66" cy="27" r="1.5" fill="#1c1c1e" />
+    <circle cx="72" cy="27" r="1.5" fill="#1c1c1e" />
+    <path d="M67 31 Q69 32.5 71 31" stroke="#1c1c1e" strokeWidth="1" strokeLinecap="round" />
+  </svg>
+);
+
 const PythonReaction = () => (
   <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
     <path 
@@ -245,6 +265,14 @@ const RedshiftReaction = () => (
   </svg>
 );
 
+const PowerBIReaction = () => (
+  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+    <rect x="6" y="18" width="5" height="10" rx="0.5" fill="#f2c811" stroke="#1c1c1e" strokeWidth="2.2" />
+    <rect x="14" y="12" width="5" height="16" rx="0.5" fill="#f2a900" stroke="#1c1c1e" strokeWidth="2.2" />
+    <rect x="22" y="6" width="5" height="22" rx="0.5" fill="#e07c00" stroke="#1c1c1e" strokeWidth="2.2" />
+  </svg>
+);
+
 export default function SkillsMeet() {
   const [micActive, setMicActive] = useState(true);
   const [camActive, setCamActive] = useState(true);
@@ -273,7 +301,7 @@ export default function SkillsMeet() {
     if (!isMobile || isSlow) return;
     
     const interval = setInterval(() => {
-      const skills = ["Python", "Postgres", "Airflow", "GCP / Cloud", "PySpark", "Warehousing", "Redshift"];
+      const skills = ["Python", "Postgres", "Airflow", "GCP / Cloud", "PySpark", "Warehousing", "Redshift", "Power BI"];
       const randomSkill = skills[Math.floor(Math.random() * skills.length)];
       setHoveredCard(randomSkill);
       
@@ -328,7 +356,7 @@ export default function SkillsMeet() {
 
   // Typewriter effect state
   const [typedText, setTypedText] = useState("");
-  const fullText = "hey! i'm a data engineer working remotely from india, open to remote roles globally or relocation for the right team. let's sync up and build something solid!";
+  const fullText = "hey! i'm a data analyst and engineer working remotely from india, open to remote roles globally or relocation for the right team. let's sync up and build something solid!";
   
   useEffect(() => {
     if (showCards) {
@@ -375,9 +403,10 @@ export default function SkillsMeet() {
     { name: "Postgres", bg: "bg-[#FFD860]", component: <PostgresAvatar />, reaction: <PostgresReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
     { name: "Airflow", bg: "bg-[#FF73B5]", component: <AirflowAvatar />, reaction: <AirflowReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
     { name: "GCP / Cloud", bg: "bg-[#A5CF4E]", component: <CloudAvatar />, reaction: <CloudReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "PySpark", bg: "bg-[#9370db]", component: <SparkAvatar />, reaction: <SparkReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
-    { name: "Warehousing", bg: "bg-[#ffa500]", component: <WarehouseAvatar />, reaction: <WarehouseReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
-    { name: "Redshift", bg: "bg-[#ef4444]", component: <RedshiftAvatar />, reaction: <RedshiftReaction />, gridClass: "col-span-12 sm:col-span-12 lg:col-span-4" },
+    { name: "PySpark", bg: "bg-[#9370db]", component: <SparkAvatar />, reaction: <SparkReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "Warehousing", bg: "bg-[#ffa500]", component: <WarehouseAvatar />, reaction: <WarehouseReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "Redshift", bg: "bg-[#ef4444]", component: <RedshiftAvatar />, reaction: <RedshiftReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "Power BI", bg: "bg-[#f2c811]", component: <PowerBIAvatar />, reaction: <PowerBIReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
   ];
 
   // Letters of SKILLS! title

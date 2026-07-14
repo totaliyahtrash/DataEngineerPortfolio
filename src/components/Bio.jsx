@@ -85,7 +85,7 @@ export default function Bio() {
       case 1:
         return {
           title: 'PYTHON',
-          subtitle: 'ETL & Data Engineering',
+          subtitle: 'ETL, Analysis & Engineering',
           desc: 'Core language for writing data processors, web API comment scrapers, and VADER sentiment analysis engines. Focuses on modular structures and raw data cleaning.'
         };
       case 2:

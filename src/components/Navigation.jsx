@@ -144,7 +144,7 @@ const TcgCard = ({ mousePos }) => {
 
         {/* Card Role Info Ribbon */}
         <div className="bg-[#7C3AED] text-white border-y-2 border-black py-0.5 text-[9px] font-mono text-center font-bold tracking-wider z-10">
-          DATA ENGINEER POKÉMON
+          ANALYST & ENGINEER POKÉMON
         </div>
 
         {/* Card Moves / Abilities Details */}
@@ -351,7 +351,7 @@ export default function Navigation({ setMarioTriggered }) {
           <span 
             className="font-mono text-xs text-white/80 hover:text-white transition-colors duration-200 cursor-default select-none relative group hidden sm:inline"
           >
-            <span className="relative z-10">data engineer</span>
+            <span className="relative z-10">data analyst & engineer</span>
             <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-white origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
           </span>
 

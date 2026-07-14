@@ -42,7 +42,7 @@ export default function Calendar() {
     { 
       id: 'cu-education', 
       title: '🎓 CHANDIGARH UNIVERSITY', 
-      detail: 'Bachelor of Engineering (B.E.) in Computer Science & Engineering (Aug 2023 - Jul 2027). Graduating with a cumulative 8.2 CGPA. Specialized in Big Data ingestion structures and high-performance databases.', 
+      detail: 'Bachelor of Engineering (B.E.) in Computer Science & Engineering (Aug 2023 - Jul 2027). Graduating with a cumulative 8.2 CGPA. Specialized in Big Data workflows, databases, and analytics.', 
       col: 2, 
       rowStart: 4, // Starts in 2023
       rowSpan: 8,  // Spans up to 2027 (row 12)
@@ -51,7 +51,7 @@ export default function Calendar() {
     { 
       id: 'future-role', 
       title: '💼 YOUR COMPANY / ROLE', 
-      detail: 'Ready to join your engineering team starting July 2027. Prepared to architect ingestion systems, deploy custom Model Context Protocol (MCP) servers, and scale workflows.', 
+      detail: 'Ready to join your team as a Data Analyst or Data Engineer starting July 2027. Prepared to build ingestion pipelines, construct analytical models, design dashboards, and extract business value.', 
       col: 3, 
       rowStart: 12, // Starts at 2027
       rowSpan: 2,  // Extends past 2027 to PRESENT/FUTURE
@@ -218,7 +218,7 @@ export default function Calendar() {
                   8.2 CGPA ⭐️
                 </span>
                 <p className="font-mono text-[9.5px] sm:text-[10px] leading-relaxed text-white/95 font-semibold">
-                  Bachelor of Engineering (B.E.) in Computer Science & Engineering. Specialized in Big Data ingestion structures and high-performance databases.
+                  Bachelor of Engineering (B.E.) in Computer Science & Engineering. Specialized in Big Data workflows, databases, and analytics.
                 </p>
               </div>
             </div>
@@ -235,7 +235,7 @@ export default function Calendar() {
                   YOUR COMPANY / ROLE
                 </span>
                 <p className="font-mono text-[9.5px] sm:text-[10px] leading-relaxed text-white/95 font-semibold">
-                  Ready to join your engineering team. Prepared to architect ingestion systems, deploy custom Model Context Protocol (MCP) servers, and scale workflows.
+                  Ready to join your team as a Data Analyst or Data Engineer. Prepared to build ingestion pipelines, construct analytical models, design dashboards, and extract business value.
                 </p>
               </div>
             </div>

@@ -1082,7 +1082,7 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
         {!isMobile && (
           <motion.a
             href="/resume.pdf"
-            download="Dhruv_Saini_Data_Engineer_Resume.pdf"
+            download="Dhruv_Saini_Resume.pdf"
             whileHover={{ 
               scale: 1.05, 
               y: -2,
@@ -1137,7 +1137,7 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
         {isMobile && (
           <motion.a
             href="/resume.pdf"
-            download="Dhruv_Saini_Data_Engineer_Resume.pdf"
+            download="Dhruv_Saini_Resume.pdf"
             whileHover={{ 
               scale: 1.05, 
               y: -2,

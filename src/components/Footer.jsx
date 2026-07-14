@@ -291,7 +291,7 @@ export default function Footer() {
       stats: 'PROOF OF WORK',
       logo: <LinkedInLogo />,
       color: 'bg-[#00A7FE]',
-      abilityDetail: 'professional milestones, proof of work, and data engineering logs.',
+      abilityDetail: 'professional milestones, analytical portfolios, and data pipeline logs.',
       link: 'https://linkedin.com/in/dhruvxdsaini/'
     },
     {

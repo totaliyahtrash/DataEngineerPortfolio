@@ -2,28 +2,27 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function BelowFold() {
-  const titleWords = "DATA ENGINEER".split(" ");
-  const word1 = titleWords[0].split("");
-  const word2 = titleWords[1].split("");
+  const word1 = "DATA ANALYSIS".split("");
+  const word2 = "& ENGINEERING".split("");
 
-  // Specific hand-crafted rotations for "DATA ENGINEER" letters
-  const rotations1 = [2, -3, 3, -2];
-  const rotations2 = [-3, 2, -4, 1, -2, 3, -1, 4];
+  // Specific hand-crafted rotations for "DATA ANALYSIS & ENGINEERING" letters
+  const rotations1 = [2, -3, 3, -2, 1, -4, 2, -3, 3, -1, 4, -2, 1];
+  const rotations2 = [-3, 2, -4, 1, -2, 3, -1, 4, -2, 3, -1, 2, -3];
 
   return (
     <section className="relative w-full min-h-[60vh] flex flex-col items-center justify-center bg-[#7C3AED] pt-16 pb-24 px-4 sm:px-6 overflow-hidden section-contain">
       
-      {/* Title: DATA ENGINEER */}
+      {/* Title: DATA ANALYSIS & ENGINEERING */}
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-col items-center justify-center text-white leading-[0.75] text-[11vw] xs:text-[10vw] sm:text-[9vw] md:text-[8vw] tracking-[-0.05em] font-black uppercase text-center w-full select-none mb-10 z-10"
+        className="flex flex-col items-center justify-center text-white leading-[0.75] text-[8vw] xs:text-[7.5vw] sm:text-[6.5vw] md:text-[5.8vw] lg:text-[4.8vw] tracking-[-0.05em] font-black uppercase text-center w-full select-none mb-10 z-10"
         style={{ fontFamily: "'Unbounded', sans-serif" }}
       >
-        {/* Word 1: DATA (Locked inline, never wraps internally) */}
-        <span className="whitespace-nowrap flex justify-center mb-1">
+        {/* Word 1: DATA ANALYSIS (Locked inline, never wraps internally) */}
+        <span className="whitespace-nowrap flex justify-center mb-1.5">
           {word1.map((char, index) => (
             <span
               key={`data-${index}`}
@@ -32,15 +31,15 @@ export default function BelowFold() {
                 transform: `rotate(${rotations1[index % rotations1.length]}deg) translateY(${index % 2 === 0 ? '-3px' : '3px'})`,
                 marginRight: '-0.04em',
               }}
-              className="hover:scale-110 transition-transform duration-200 cursor-default drop-shadow-[0_8px_0_rgba(0,0,0,0.12)]"
+              className="hover:scale-110 transition-transform duration-200 cursor-default drop-shadow-[0_8px_0_rgba(0,0,0_0.12)]"
             >
-              {char}
+              {char === " " ? "\u00A0" : char}
             </span>
           ))}
         </span>
 
-        {/* Word 2: ENGINEER (Locked inline, never wraps internally) */}
-        <span className="whitespace-nowrap flex justify-center mt-[-0.5vw]">
+        {/* Word 2: & ENGINEERING (Locked inline, never wraps internally) */}
+        <span className="whitespace-nowrap flex justify-center mt-[-0.2vw]">
           {word2.map((char, index) => (
             <span
               key={`eng-${index}`}
@@ -49,9 +48,9 @@ export default function BelowFold() {
                 transform: `rotate(${rotations2[index % rotations2.length]}deg) translateY(${index % 2 !== 0 ? '-3px' : '3px'})`,
                 marginRight: '-0.04em',
               }}
-              className="hover:scale-110 transition-transform duration-200 cursor-default drop-shadow-[0_8px_0_rgba(0,0,0,0.12)]"
+              className="hover:scale-110 transition-transform duration-200 cursor-default drop-shadow-[0_8px_0_rgba(0,0,0_0.12)]"
             >
-              {char}
+              {char === " " ? "\u00A0" : char}
             </span>
           ))}
         </span>
@@ -67,9 +66,9 @@ export default function BelowFold() {
       >
         <div className="absolute top-[-9px] left-1/2 -translate-x-1/2 w-24 h-5 paper-tape rotate-[-2deg] border-x border-black/10" />
         <p className="font-mono text-xs sm:text-sm md:text-[13px] leading-relaxed text-left font-semibold">
-          i build data infrastructure, pipelines, and systems from my desk. 
-          i work with teams worldwide from anywhere, or on-site where the engineering happens. 
-          it's about making data flow smoothly, wherever we are.
+          i build solid data infrastructure, orchestrate ETL pipelines, and construct analytical models. 
+          from designing databases to extracting actionable insights and building interactive dashboards, i bridge the gap between raw data and business intelligence. 
+          it's about making data clean, reliable, and useful for everyone.
         </p>
       </motion.div>
 
