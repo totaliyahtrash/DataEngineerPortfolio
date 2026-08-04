@@ -55,25 +55,26 @@ const PostgresAvatar = () => (
   </svg>
 );
 
-const AirflowAvatar = () => (
+const AIAvatar = () => (
   <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
-    <motion.g 
-      animate={{ rotate: 360 }}
-      transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-      style={{ transformOrigin: "50px 50px" }}
-    >
-      <circle cx="50" cy="50" r="28" stroke="#1c1c1c" strokeWidth="2" strokeDasharray="6 4" fill="none" />
-    </motion.g>
-    <path d="M30 65 A 12 12 0 0 1 35 42 A 16 16 0 0 1 65 38 A 12 12 0 0 1 72 65 Z" fill="#fff" stroke="#1c1c1c" strokeWidth="2.5" />
-    <circle cx="45" cy="52" r="2" fill="#1c1c1c" />
-    <circle cx="55" cy="52" r="2" fill="#1c1c1c" />
-    <path d="M47 57 C 48 59, 52 59, 53 57" stroke="#1c1c1c" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-    <motion.path 
-      d="M20 62 L10 62 M24 50 L12 50 M22 56 L8 56" 
-      stroke="#1c1c1c" strokeWidth="2" strokeLinecap="round"
-      animate={{ x: [-5, 5, -5] }}
-      transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-    />
+    {/* Robot head */}
+    <rect x="25" y="30" width="50" height="42" rx="8" fill="#a855f7" stroke="#1c1c1e" strokeWidth="2.5" />
+    {/* Robot ears/antennas */}
+    <rect x="20" y="47" width="5" height="10" rx="1" fill="#1c1c1e" />
+    <rect x="75" y="47" width="5" height="10" rx="1" fill="#1c1c1e" />
+    <circle cx="50" cy="22" r="4" fill="#ffd860" stroke="#1c1c1e" strokeWidth="2" />
+    <line x1="50" y1="30" x2="50" y2="26" stroke="#1c1c1e" strokeWidth="2.5" />
+    {/* Screen panel */}
+    <rect x="32" y="37" width="36" height="20" rx="4" fill="#1e1b4b" stroke="#1c1c1e" strokeWidth="2" />
+    {/* Eyes (glowy cyan circles) */}
+    <circle cx="43" cy="47" r="3" fill="#22d3ee" className="animate-pulse" />
+    <circle cx="57" cy="47" r="3" fill="#22d3ee" className="animate-pulse" />
+    {/* Mouth (soundwave lines) */}
+    <path d="M42 53 h16" stroke="#22d3ee" strokeWidth="1.5" strokeLinecap="round" />
+    {/* Neck */}
+    <rect x="44" y="72" width="12" height="8" fill="#1c1c1e" />
+    {/* Collar */}
+    <path d="M35 80 h30" stroke="#1c1c1e" strokeWidth="3" strokeLinecap="round" />
   </svg>
 );
 
@@ -91,14 +92,7 @@ const CloudAvatar = () => (
   </svg>
 );
 
-const SparkAvatar = () => (
-  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
-    <path d="M50 15 C30 40, 25 65, 30 78 C35 90, 65 90, 70 78 C75 65, 70 40, 50 15 Z" fill="#9370db" stroke="#1c1c1c" strokeWidth="2.5" />
-    <path d="M50 35 C38 52, 36 68, 40 76 C44 82, 56 82, 60 76 C64 68, 62 52, 50 35 Z" fill="#ff73b5" />
-    <polygon points="35,50 45,50 48,42 51,50 61,50 53,55 56,64 50,59 44,64 47,55" fill="#1c1c1c" />
-    <path d="M47 68 Q50 72 53 68" stroke="#1c1c1c" strokeWidth="1.5" strokeLinecap="round" />
-  </svg>
-);
+
 
 const WarehouseAvatar = () => (
   <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
@@ -112,36 +106,7 @@ const WarehouseAvatar = () => (
   </svg>
 );
 
-const RedshiftAvatar = () => (
-  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
-    {/* Red Database Stack */}
-    <path d="M25 35 v12 c0 6 50 6 50 0 v-12" fill="#b91c1c" stroke="#1c1c1e" strokeWidth="2.5" />
-    <path d="M25 55 v12 c0 6 50 6 50 0 v-12" fill="#b91c1c" stroke="#1c1c1e" strokeWidth="2.5" />
-    
-    <ellipse cx="50" cy="35" rx="25" ry="6" fill="#ef4444" stroke="#1c1c1e" strokeWidth="2.5" />
-    <ellipse cx="50" cy="55" rx="25" ry="6" fill="#ef4444" stroke="#1c1c1e" strokeWidth="2.5" />
-    
-    {/* Connection lines / details */}
-    <path d="M25 41 c0 5 50 5 50 0" stroke="#1c1c1e" strokeWidth="1.5" />
-    <path d="M25 61 c0 5 50 5 50 0" stroke="#1c1c1e" strokeWidth="1.5" />
-    
-    {/* Face on the top cylinder */}
-    <circle cx="42" cy="35" r="2.2" fill="#1c1c1e" />
-    <circle cx="58" cy="35" r="2.2" fill="#1c1c1e" />
-    <path d="M46 39 Q50 41 54 39" stroke="#1c1c1e" strokeWidth="1.5" strokeLinecap="round" />
-    
-    {/* Ascending Arrow block */}
-    <motion.path 
-      d="M50 15 L58 23 H53 V29 H47 V23 H42 Z" 
-      fill="#ffd860" 
-      stroke="#1c1c1e" 
-      strokeWidth="2" 
-      strokeLinejoin="miter"
-      animate={{ y: [-2, 2, -2] }}
-      transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-    />
-  </svg>
-);
+
 
 const PowerBIAvatar = () => (
   <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
@@ -202,20 +167,13 @@ const PostgresReaction = () => (
   </svg>
 );
 
-const AirflowReaction = () => (
+const AIReaction = () => (
   <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
-    <path 
-      d="M6 10h12a4 4 0 014 4v0a4 4 0 01-4 4H10a4 4 0 00-4 4v0a4 4 0 004 4h16" 
-      stroke="#38bdf8" 
-      strokeWidth="4" 
-      strokeLinecap="round" 
-    />
-    <path 
-      d="M6 10h12a4 4 0 014 4v0a4 4 0 01-4 4H10a4 4 0 00-4 4v0a4 4 0 004 4h16" 
-      stroke="#1c1c1e" 
-      strokeWidth="2.2" 
-      strokeLinecap="round" 
-    />
+    <rect x="6" y="8" width="20" height="16" rx="3" fill="#a855f7" stroke="#1c1c1e" strokeWidth="2.2" />
+    <circle cx="12" cy="15" r="1.5" fill="#22d3ee" />
+    <circle cx="20" cy="15" r="1.5" fill="#22d3ee" />
+    <circle cx="16" cy="5" r="1.5" fill="#ffd860" stroke="#1c1c1e" strokeWidth="1.5" />
+    <line x1="16" y1="8" x2="16" y2="6.5" stroke="#1c1c1e" strokeWidth="1.5" />
   </svg>
 );
 
@@ -233,17 +191,7 @@ const CloudReaction = () => (
   </svg>
 );
 
-const SparkReaction = () => (
-  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
-    <path 
-      d="M16 4l3.5 8.5L28 16l-8.5 3.5L16 28l-3.5-8.5L4 16l8.5-3.5Z" 
-      fill="#facc15" 
-      stroke="#1c1c1e" 
-      strokeWidth="2.2" 
-      strokeLinejoin="round" 
-    />
-  </svg>
-);
+
 
 const WarehouseReaction = () => (
   <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
@@ -253,17 +201,7 @@ const WarehouseReaction = () => (
   </svg>
 );
 
-const RedshiftReaction = () => (
-  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
-    <path 
-      d="M19 4L7 18h8v10l12-14h-8Z" 
-      fill="#ef4444" 
-      stroke="#1c1c1e" 
-      strokeWidth="2.2" 
-      strokeLinejoin="round" 
-    />
-  </svg>
-);
+
 
 const PowerBIReaction = () => (
   <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
@@ -301,7 +239,7 @@ export default function SkillsMeet() {
     if (!isMobile || isSlow) return;
     
     const interval = setInterval(() => {
-      const skills = ["Python", "Postgres", "Airflow", "GCP / Cloud", "PySpark", "Warehousing", "Redshift", "Power BI"];
+      const skills = ["Python", "Postgres", "Cloud", "Warehousing", "Power BI", "AI Orchestration"];
       const randomSkill = skills[Math.floor(Math.random() * skills.length)];
       setHoveredCard(randomSkill);
       
@@ -399,14 +337,12 @@ export default function SkillsMeet() {
   };
 
   const skillsList = [
-    { name: "Python", bg: "bg-[#00A7FE]", component: <PythonAvatar />, reaction: <PythonReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "Postgres", bg: "bg-[#FFD860]", component: <PostgresAvatar />, reaction: <PostgresReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "Airflow", bg: "bg-[#FF73B5]", component: <AirflowAvatar />, reaction: <AirflowReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "GCP / Cloud", bg: "bg-[#A5CF4E]", component: <CloudAvatar />, reaction: <CloudReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "PySpark", bg: "bg-[#9370db]", component: <SparkAvatar />, reaction: <SparkReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "Warehousing", bg: "bg-[#ffa500]", component: <WarehouseAvatar />, reaction: <WarehouseReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "Redshift", bg: "bg-[#ef4444]", component: <RedshiftAvatar />, reaction: <RedshiftReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
-    { name: "Power BI", bg: "bg-[#f2c811]", component: <PowerBIAvatar />, reaction: <PowerBIReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-3" },
+    { name: "Python", bg: "bg-[#00A7FE]", component: <PythonAvatar />, reaction: <PythonReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { name: "Postgres", bg: "bg-[#FFD860]", component: <PostgresAvatar />, reaction: <PostgresReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { name: "Cloud", bg: "bg-[#A5CF4E]", component: <CloudAvatar />, reaction: <CloudReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { name: "Warehousing", bg: "bg-[#ffa500]", component: <WarehouseAvatar />, reaction: <WarehouseReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { name: "Power BI", bg: "bg-[#f2c811]", component: <PowerBIAvatar />, reaction: <PowerBIReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { name: "AI Orchestration", bg: "bg-[#A855F7]", component: <AIAvatar />, reaction: <AIReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
   ];
 
   // Letters of SKILLS! title

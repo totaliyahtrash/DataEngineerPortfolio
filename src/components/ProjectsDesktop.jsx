@@ -19,42 +19,33 @@ const isSlowNetworkOrDevice = () => {
 };
 
 // ScatteredWord helper component
-const ScatteredWord = ({ word, scrollProgress, triggerRange, outputRange, sizeClass = "text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem]" }) => {
+const ScatteredWord = ({ word, scrollProgress, triggerRange, outputRange, sizeClass = "text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem]" }) => {
   const letters = word.split("");
   const panelOffset = useTransform(scrollProgress, triggerRange, outputRange);
-  const springOffset = useSpring(panelOffset, { stiffness: 60, damping: 18 });
-
-  // Generate random target offsets once on mount
-  const randomCoords = useRef(letters.map(() => ({
-    x: (Math.random() - 0.5) * 500,
-    y: (Math.random() - 0.5) * 400,
-    rotate: (Math.random() - 0.5) * 180
-  }))).current;
+  
+  // Clean entry slide up and fade-in instead of layout scattering
+  const y = useTransform(panelOffset, [0, 1], [0, 12]);
+  const opacity = useTransform(panelOffset, [0, 1], [1, 0.15]);
+  const springY = useSpring(y, { stiffness: 90, damping: 20 });
+  const springOpacity = useSpring(opacity, { stiffness: 90, damping: 20 });
 
   return (
-    <div className="flex select-none flex-wrap justify-center mb-6">
-      {letters.map((char, index) => {
-        const coords = randomCoords[index];
-        if (char === " ") {
-          return <span key={index} className="w-5" />;
-        }
-        
-        const x = useTransform(springOffset, [0, 1], [0, coords.x]);
-        const y = useTransform(springOffset, [0, 1], [0, coords.y]);
-        const rotate = useTransform(springOffset, [0, 1], [0, coords.rotate]);
-        const opacity = useTransform(springOffset, [0, 1], [1, 0.15]);
-
-        return (
-          <motion.span
-            key={index}
-            style={{ x, y, rotate, opacity, display: 'inline-block' }}
-            className={`font-bubble ${sizeClass} tracking-[-0.05em] font-black uppercase text-black cursor-default drop-shadow-[2px_2px_0_#000] gpu-accelerated`}
-          >
-            {char}
-          </motion.span>
-        );
-      })}
-    </div>
+    <motion.h3 
+      style={{ y: springY, opacity: springOpacity }}
+      className={`font-bubble ${sizeClass} tracking-[-0.03em] font-black uppercase text-black mb-4 text-left drop-shadow-[2px_2px_0_#000] select-none`}
+    >
+      {letters.map((char, index) => (
+        <motion.span
+          key={index}
+          style={{ display: 'inline-block' }}
+          whileHover={{ y: -4, rotate: index % 2 === 0 ? 3 : -3 }}
+          transition={{ type: "spring", stiffness: 350, damping: 12 }}
+          className="hover:text-[#7C3AED] transition-colors duration-150"
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.h3>
   );
 };
 
@@ -178,13 +169,16 @@ export default function ProjectsDesktop() {
               {/* Visual Sketch */}
               <div className="w-full bg-white border-3 border-black p-3 rounded-xl shadow-[3px_3px_0_#000] relative rotate-[-1.5deg] shrink-0">
                 <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-20 h-20 mx-auto mb-1 float-element">
-                  <path d="M30 85 V40 A20 20 0 0 1 70 40 V85 Z" fill="#9ca3af" stroke="black" strokeWidth="2.5" />
-                  <text x="50" y="55" textAnchor="middle" fill="black" fontSize="12" fontWeight="black" fontFamily="sans-serif">RIP</text>
-                  <path d="M50 25 V38 M44 31 H56" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M15 85 H85" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M18 55 C18 45 28 45 28 55 C28 62 25 65 25 68 H21 C21 65 18 62 18 55 Z" fill="white" stroke="black" strokeWidth="2" />
-                  <circle cx="21" cy="52" r="1" fill="black" />
-                  <circle cx="25" cy="52" r="1" fill="black" />
+                  <circle cx="50" cy="55" r="28" fill="#f87171" stroke="black" strokeWidth="2.5" />
+                  <path d="M10 82h80" stroke="black" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M32 82V36a18 18 0 0 1 36 0v46H32z" fill="#9ca3af" stroke="black" strokeWidth="2.5" />
+                  <text x="50" y="58" textAnchor="middle" fill="black" fontSize="11" fontWeight="black" fontFamily="sans-serif">RIP</text>
+                  <path d="M50 24v12M44 30h12" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
+                  <rect x="58" y="70" width="16" height="12" rx="1" fill="#4b5563" stroke="black" strokeWidth="2" />
+                  <path d="M56 82h20" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M15 52c0-8 10-8 10 0c0 5-2 8-2 10H17c0-2-2-5-2-10z" fill="white" stroke="black" strokeWidth="2" />
+                  <circle cx="18" cy="50" r="0.8" fill="black" />
+                  <circle cx="21" cy="50" r="0.8" fill="black" />
                 </svg>
                 <h4 className="font-mono font-bold text-[8px] uppercase text-black/50 text-center mb-0.5">[tech graveyard]</h4>
                 <p className="font-mono text-[8px] text-center font-semibold leading-tight text-black/80">Exploring product lifespans and sunset analytics at Google, Apple, Microsoft, and Yahoo.</p>
@@ -402,20 +396,27 @@ export default function ProjectsDesktop() {
                       <div className="absolute top-[-8px] left-[30px] w-12 h-4 paper-tape rotate-[3deg] border-x border-black/10" />
                       {/* Tombstone SVG sketch */}
                       <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-36 h-36 mx-auto mb-4 float-element gpu-accelerated">
-                        <path d="M30 85 V40 A20 20 0 0 1 70 40 V85 Z" fill="#9ca3af" stroke="black" strokeWidth="2.5" />
-                        <text x="50" y="55" textAnchor="middle" fill="black" fontSize="12" fontWeight="black" fontFamily="sans-serif">RIP</text>
-                        <path d="M50 25 V38 M44 31 H56" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
-                        <path d="M15 85 H85 M20 85 L25 80 M75 85 L80 80" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
-                        <motion.path 
-                          d="M18 55 C18 45 28 45 28 55 C28 62 25 65 25 68 H21 C21 65 18 62 18 55 Z" 
-                          fill="white" 
-                          stroke="black" 
-                          strokeWidth="2" 
-                          animate={{ y: [-3, 3, -3], rotate: [-2, 2, -2] }}
-                          transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
-                        />
-                        <circle cx="21" cy="52" r="1" fill="black" />
-                        <circle cx="25" cy="52" r="1" fill="black" />
+                        <circle cx="50" cy="55" r="28" fill="#f87171" stroke="black" strokeWidth="2.5" />
+                        <path d="M10 82h80" stroke="black" strokeWidth="3" strokeLinecap="round" />
+                        <path d="M32 82V36a18 18 0 0 1 36 0v46H32z" fill="#9ca3af" stroke="black" strokeWidth="2.5" />
+                        <path d="M38 32l6 8-2 6" stroke="black" strokeWidth="1.5" strokeLinecap="round" />
+                        <text x="50" y="58" textAnchor="middle" fill="black" fontSize="11" fontWeight="black" fontFamily="sans-serif" letterSpacing="1">RIP</text>
+                        <path d="M50 24v12M44 30h12" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
+                        
+                        <rect x="58" y="70" width="16" height="12" rx="1" fill="#4b5563" stroke="black" strokeWidth="2" />
+                        <path d="M56 82h20" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
+                        <path d="M64 74l4 4m0-4l-4 4" stroke="black" strokeWidth="1.5" strokeLinecap="round" />
+
+                        <motion.g
+                          animate={{ y: [-4, 4, -4], rotate: [-4, 4, -4] }}
+                          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+                        >
+                          <path d="M15 52c0-8 10-8 10 0c0 5-2 8-2 10H17c0-2-2-5-2-10z" fill="white" stroke="black" strokeWidth="2" />
+                          <circle cx="18" cy="50" r="0.8" fill="black" />
+                          <circle cx="21" cy="50" r="0.8" fill="black" />
+                        </motion.g>
+
+                        <path d="M15 82v-4M18 82v-6M80 82v-5M83 82v-3" stroke="black" strokeWidth="2" strokeLinecap="round" />
                       </svg>
                       <h4 className="font-mono font-bold text-xs uppercase text-black/50 text-center mb-1">[tech graveyard]</h4>
                       <p className="font-mono text-[10px] text-center font-semibold leading-snug">Exploring product lifespans and sunset analytics at Google, Apple, Microsoft, and Yahoo.</p>
