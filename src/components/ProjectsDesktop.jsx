@@ -172,7 +172,55 @@ export default function ProjectsDesktop() {
           {/* Carousel Track */}
           <div className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory px-6 pb-6 space-x-5 scroll-smooth w-full">
             
-            {/* PANEL 1: Steam Market Intel */}
+            {/* PANEL 1: Tech Graveyard */}
+            <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#A5CF4E] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">
+              <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
+              {/* Visual Sketch */}
+              <div className="w-full bg-white border-3 border-black p-3 rounded-xl shadow-[3px_3px_0_#000] relative rotate-[-1.5deg] shrink-0">
+                <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-20 h-20 mx-auto mb-1 float-element">
+                  <path d="M30 85 V40 A20 20 0 0 1 70 40 V85 Z" fill="#9ca3af" stroke="black" strokeWidth="2.5" />
+                  <text x="50" y="55" textAnchor="middle" fill="black" fontSize="12" fontWeight="black" fontFamily="sans-serif">RIP</text>
+                  <path d="M50 25 V38 M44 31 H56" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M15 85 H85" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M18 55 C18 45 28 45 28 55 C28 62 25 65 25 68 H21 C21 65 18 62 18 55 Z" fill="white" stroke="black" strokeWidth="2" />
+                  <circle cx="21" cy="52" r="1" fill="black" />
+                  <circle cx="25" cy="52" r="1" fill="black" />
+                </svg>
+                <h4 className="font-mono font-bold text-[8px] uppercase text-black/50 text-center mb-0.5">[tech graveyard]</h4>
+                <p className="font-mono text-[8px] text-center font-semibold leading-tight text-black/80">Exploring product lifespans and sunset analytics at Google, Apple, Microsoft, and Yahoo.</p>
+              </div>
+              {/* Text Card */}
+              <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/tech-graveyard-analytics" rotateClass="rotate-[1deg] flex-grow">
+                <div className="inline-flex items-center space-x-1.5 bg-[#FFD860] border-2 border-black rounded px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[1px_1px_0_#000]">
+                  <span>Sunset Analytics</span>
+                  <span>🪦</span>
+                </div>
+                <h3 className="font-bubble text-base sm:text-lg font-black text-black mb-1 uppercase leading-none">TECH GRAVEYARD</h3>
+                <p className="font-mono text-[9px] font-semibold leading-relaxed mb-3 text-black/85">
+                  An end-to-end DE and BI project exploring corporate product survival coordinates and failures.
+                </p>
+                <div className="border-t border-dashed border-black/25 pt-2.5 space-y-1">
+                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
+                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span><strong>data engineering</strong>: date schema standardization & star schema.</span>
+                  </div>
+                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
+                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span><strong>bi dashboard</strong>: 2-page dark-mode interactive Power BI file.</span>
+                  </div>
+                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
+                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span><strong>metrics analysis</strong>: Sunset Velocity and CEO Patience Index.</span>
+                  </div>
+                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
+                    <span className="text-[#00A7FE] font-bold">✶</span>
+                    <span><strong>pandas etl</strong>: standardizes mixed formats, active flags, and casings.</span>
+                  </div>
+                </div>
+              </ProjectTextCard>
+            </div>
+
+            {/* PANEL 2: Steam Market Intel */}
             <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#00A7FE] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">
               <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
               {/* Visual Sketch */}
@@ -193,7 +241,7 @@ export default function ProjectsDesktop() {
                 <p className="font-mono text-[8px] text-center font-semibold leading-tight text-black/80">Processes 27,000+ Steam game records into a production-grade PostgreSQL star schema.</p>
               </div>
               {/* Text Card */}
-              <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/steam-market-intel" rotateClass="rotate-[1deg] flex-grow">
+              <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/steam-market-intel" rotateClass="rotate-[-1deg] flex-grow">
                 <div className="inline-flex items-center space-x-1.5 bg-[#FFD860] border-2 border-black rounded px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[1px_1px_0_#000]">
                   <span>ETL Pipeline</span>
                   <span>⚙️</span>
@@ -223,7 +271,7 @@ export default function ProjectsDesktop() {
               </ProjectTextCard>
             </div>
 
-            {/* PANEL 2: Sentiment Analyzer */}
+            {/* PANEL 3: Sentiment Analyzer */}
             <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#FFD860] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">
               <div className="absolute inset-[0] bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
               {/* Visual Sketch */}
@@ -266,55 +314,6 @@ export default function ProjectsDesktop() {
                   <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
                     <span className="text-[#FF73B5] font-bold">✶</span>
                     <span><strong>key insight</strong>: Mitski fanbase shows higher sadness.</span>
-                  </div>
-                </div>
-              </ProjectTextCard>
-            </div>
-
-            {/* PANEL 3: Open Library */}
-            <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#A5CF4E] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">
-              <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
-              {/* Visual Sketch */}
-              <div className="w-full bg-white border-3 border-black p-3 rounded-xl shadow-[3px_3px_0_#000] relative rotate-[-1.5deg] shrink-0">
-                <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-20 h-20 mx-auto mb-1 float-element">
-                  <rect x="15" y="25" width="40" height="50" rx="3" fill="#FFD860" />
-                  <line x1="22" y1="35" x2="48" y2="35" />
-                  <line x1="22" y1="45" x2="48" y2="45" />
-                  <line x1="22" y1="55" x2="48" y2="55" />
-                  <rect x="60" y="45" width="30" height="35" rx="2" fill="#FFD860" />
-                  <path d="M70 55 h10 M70 65 h10" stroke="black" strokeWidth="2" />
-                  <path d="M40 50 Q52 40 60 50" stroke="black" strokeWidth="2.5" fill="none" />
-                  <polygon points="58,52 62,50 58,47" fill="black" />
-                </svg>
-                <h4 className="font-mono font-bold text-[8px] uppercase text-black/50 text-center mb-0.5">[open library]</h4>
-                <p className="font-mono text-[8px] text-center font-semibold leading-tight text-black/80">API book data cleaning pipeline built with zero pandas dependencies.</p>
-              </div>
-              {/* Text Card */}
-              <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/openLibrary" rotateClass="rotate-[-1deg] flex-grow">
-                <div className="inline-flex items-center space-x-1.5 bg-[#00A7FE] text-white border-2 border-black rounded px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[1px_1px_0_#000]">
-                  <span>ETL Engine</span>
-                  <span>⚙️</span>
-                </div>
-                <h3 className="font-bubble text-base sm:text-lg font-black text-black mb-1 uppercase leading-none">OPEN LIBRARY PIPELINE</h3>
-                <p className="font-mono text-[9px] font-semibold leading-relaxed mb-3 text-black/85">
-                  A pagination ETL pipeline fetching book records and outputting CSV/Parquet.
-                </p>
-                <div className="border-t border-dashed border-black/25 pt-2.5 space-y-1">
-                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
-                    <span><strong>pagination</strong>: pages search responses dynamically.</span>
-                  </div>
-                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
-                    <span><strong>cleaning</strong>: parses missing and nested JSON fields.</span>
-                  </div>
-                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
-                    <span><strong>parquet storage</strong>: compressed, schema-aware files.</span>
-                  </div>
-                  <div className="flex items-start space-x-1 font-mono text-[8px] leading-tight text-black/75">
-                    <span className="text-[#00A7FE] font-bold">✶</span>
-                    <span><strong>pure python</strong>: built using pyarrow and requests.</span>
                   </div>
                 </div>
               </ProjectTextCard>
@@ -389,11 +388,92 @@ export default function ProjectsDesktop() {
               style={{ x: springX }}
               className="flex h-full w-[400vw] pointer-events-auto"
             >
-              {/* PANEL 1: Steam Market Intel */}
-              <div className="w-screen h-screen flex-shrink-0 flex items-center justify-center bg-[#00A7FE] p-6 sm:p-12 relative overflow-hidden">
+              {/* PANEL 1: Tech Graveyard */}
+              <div className="w-screen h-screen flex-shrink-0 flex items-center justify-center bg-[#A5CF4E] p-6 sm:p-12 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none" />
                 
                 <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full pt-16 pb-12">
+                  {/* Left Column: Visual card */}
+                  <div className="flex justify-center items-center h-full">
+                    <motion.div 
+                      whileHover={{ rotate: 1.5 }}
+                      className="w-full max-w-[360px] p-6 bg-white border-3 border-black rounded shadow-[6px_6px_0_rgba(0,0,0,1)] relative rotate-[-2deg] gpu-accelerated"
+                    >
+                      <div className="absolute top-[-8px] left-[30px] w-12 h-4 paper-tape rotate-[3deg] border-x border-black/10" />
+                      {/* Tombstone SVG sketch */}
+                      <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-36 h-36 mx-auto mb-4 float-element gpu-accelerated">
+                        <path d="M30 85 V40 A20 20 0 0 1 70 40 V85 Z" fill="#9ca3af" stroke="black" strokeWidth="2.5" />
+                        <text x="50" y="55" textAnchor="middle" fill="black" fontSize="12" fontWeight="black" fontFamily="sans-serif">RIP</text>
+                        <path d="M50 25 V38 M44 31 H56" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
+                        <path d="M15 85 H85 M20 85 L25 80 M75 85 L80 80" stroke="black" strokeWidth="2.5" strokeLinecap="round" />
+                        <motion.path 
+                          d="M18 55 C18 45 28 45 28 55 C28 62 25 65 25 68 H21 C21 65 18 62 18 55 Z" 
+                          fill="white" 
+                          stroke="black" 
+                          strokeWidth="2" 
+                          animate={{ y: [-3, 3, -3], rotate: [-2, 2, -2] }}
+                          transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+                        />
+                        <circle cx="21" cy="52" r="1" fill="black" />
+                        <circle cx="25" cy="52" r="1" fill="black" />
+                      </svg>
+                      <h4 className="font-mono font-bold text-xs uppercase text-black/50 text-center mb-1">[tech graveyard]</h4>
+                      <p className="font-mono text-[10px] text-center font-semibold leading-snug">Exploring product lifespans and sunset analytics at Google, Apple, Microsoft, and Yahoo.</p>
+                    </motion.div>
+                  </div>
+ 
+                  {/* Right Column: Text card */}
+                  <div className="flex flex-col justify-center items-start relative h-full w-full">
+                    <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/tech-graveyard-analytics" rotateClass="rotate-[1.5deg]">
+                      <div className="absolute top-[-9px] right-[40px] w-16 h-5 paper-tape rotate-[-5deg] border-x border-black/10 z-20" />
+                      
+                      {/* Header Pill */}
+                      <div className="inline-flex items-center space-x-1.5 bg-[#FFD860] border-2 border-black rounded px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider mb-4 shadow-[2px_2px_0_#000] z-20 relative">
+                        <span>Sunset Analytics</span>
+                        <span>🪦</span>
+                      </div>
+ 
+                      {/* Text Assembly Header */}
+                      <ScatteredWord 
+                        word="TECH GRAVEYARD" 
+                        scrollProgress={scrollYProgress} 
+                        triggerRange={[0.0, 0.16, 0.28]} 
+                        outputRange={[0.0, 0.0, 1.0]} 
+                        sizeClass="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem]"
+                      />
+ 
+                      <p className="font-mono text-xs font-semibold leading-relaxed mb-6">
+                        An end-to-end data engineering and business intelligence project exploring why products fail, corporate lifespans, and revenue correlations at Google, Apple, Microsoft, and Yahoo.
+                      </p>
+ 
+                      <div className="border-t-2 border-dashed border-black/25 pt-4 space-y-2">
+                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
+                          <span className="text-[#00A7FE] font-bold">✶</span>
+                          <span><strong>data engineering</strong>: standardizes mixed date formats, creates active flags, and designs a PostgreSQL star schema.</span>
+                        </div>
+                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
+                          <span className="text-[#00A7FE] font-bold">✶</span>
+                          <span><strong>bi dashboard</strong>: designs a 2-page dark-mode interactive Power BI report with CEO Patience analysis.</span>
+                        </div>
+                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
+                          <span className="text-[#00A7FE] font-bold">✶</span>
+                          <span><strong>sql analytics</strong>: computes business metrics like Sunset Velocity and CEO Execution Rate using window functions.</span>
+                        </div>
+                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
+                          <span className="text-[#00A7FE] font-bold">✶</span>
+                          <span><strong>pandas etl engine</strong>: standardizes casing, handles missing values, and imputes lifespans dynamically.</span>
+                        </div>
+                      </div>
+                    </ProjectTextCard>
+                  </div>
+                </div>
+              </div>
+
+              {/* PANEL 2: Steam Market Intel */}
+              <div className="w-screen h-screen flex-shrink-0 flex items-center justify-center bg-[#00A7FE] p-6 sm:p-12 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none z-0" />
+                
+                <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full pt-16 pb-12 z-10">
                   {/* Left Column: Visual card */}
                   <div className="flex justify-center items-center h-full">
                     <motion.div 
@@ -420,7 +500,7 @@ export default function ProjectsDesktop() {
                   </div>
 
                   {/* Right Column: Text card */}
-                  <div className="flex flex-col justify-center items-start relative h-full w-full">
+                  <div className="flex flex-col justify-center items-start h-full w-full">
                     <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/steam-market-intel" rotateClass="rotate-[1.5deg]">
                       <div className="absolute top-[-9px] right-[40px] w-16 h-5 paper-tape rotate-[-5deg] border-x border-black/10 z-20" />
                       
@@ -434,8 +514,8 @@ export default function ProjectsDesktop() {
                       <ScatteredWord 
                         word="STEAM MARKET INTEL" 
                         scrollProgress={scrollYProgress} 
-                        triggerRange={[0.0, 0.16, 0.28]} 
-                        outputRange={[0.0, 0.0, 1.0]} 
+                        triggerRange={[0.08, 0.22, 0.44, 0.56]} 
+                        outputRange={[1.0, 0.0, 0.0, 1.0]} 
                         sizeClass="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem]"
                       />
 
@@ -466,7 +546,7 @@ export default function ProjectsDesktop() {
                 </div>
               </div>
 
-              {/* PANEL 2: Sentiment Analyzer */}
+              {/* PANEL 3: Sentiment Analyzer */}
               <div className="w-screen h-screen flex-shrink-0 flex items-center justify-center bg-[#FFD860] p-6 sm:p-12 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none z-0" />
                 
@@ -494,7 +574,7 @@ export default function ProjectsDesktop() {
                       <p className="font-mono text-[10px] text-center font-semibold leading-snug">Fetches comments from the YouTube API and conducts fanbase sentiment analysis using VADER.</p>
                     </motion.div>
                   </div>
-
+ 
                   {/* Right Column: Text card */}
                   <div className="flex flex-col justify-center items-start h-full w-full">
                     <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/SentimentPipeline" rotateClass="rotate-[-1deg]">
@@ -505,20 +585,20 @@ export default function ProjectsDesktop() {
                         <span>NLP Pipeline</span>
                         <span>⚡</span>
                       </div>
-
+ 
                       {/* Text Assembly Header */}
                       <ScatteredWord 
                         word="SENTIMENT ANALYZER" 
                         scrollProgress={scrollYProgress} 
-                        triggerRange={[0.08, 0.22, 0.44, 0.56]} 
+                        triggerRange={[0.33, 0.46, 0.70, 0.82]} 
                         outputRange={[1.0, 0.0, 0.0, 1.0]} 
                         sizeClass="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem]"
                       />
-
+ 
                       <p className="font-mono text-xs font-semibold leading-relaxed mb-6">
                         A Python data pipeline crawling real YouTube comments and aggregating sentiment metrics across artists using VADER sentiment analysis.
                       </p>
-
+ 
                       <div className="border-t-2 border-dashed border-black/25 pt-4 space-y-2">
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
                           <span className="text-[#FF73B5] font-bold">✶</span>
@@ -535,83 +615,6 @@ export default function ProjectsDesktop() {
                         <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
                           <span className="text-[#FF73B5] font-bold">✶</span>
                           <span><strong>fanbase insight</strong>: Mitski fans show high negative scores (sad lyrics).</span>
-                        </div>
-                      </div>
-                    </ProjectTextCard>
-                  </div>
-                </div>
-              </div>
-
-              {/* PANEL 3: Open Library */}
-              <div className="w-screen h-screen flex-shrink-0 flex items-center justify-center bg-[#A5CF4E] p-6 sm:p-12 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.08)_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none" />
-                
-                <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full pt-16 pb-12">
-                  {/* Left Column: Visual card */}
-                  <div className="flex justify-center items-center h-full">
-                    <motion.div 
-                      whileHover={{ rotate: 1.5 }}
-                      className="w-full max-w-[360px] p-6 bg-white border-3 border-black rounded shadow-[6px_6px_0_rgba(0,0,0,1)] relative rotate-[-2deg] gpu-accelerated"
-                    >
-                      <div className="absolute top-[-8px] left-[30px] w-12 h-4 paper-tape rotate-[3deg] border-x border-black/10" />
-                      
-                      {/* Library SVG sketch */}
-                      <svg viewBox="0 0 100 100" fill="none" stroke="black" strokeWidth="2.5" className="w-36 h-36 mx-auto mb-4 float-element gpu-accelerated" style={{ animationDelay: "1.5s" }}>
-                        <rect x="15" y="25" width="40" height="50" rx="3" fill="#FFD860" />
-                        <line x1="22" y1="35" x2="48" y2="35" />
-                        <line x1="22" y1="45" x2="48" y2="45" />
-                        <line x1="22" y1="55" x2="48" y2="55" />
-                        <rect x="60" y="45" width="30" height="35" rx="2" fill="#FFD860" />
-                        <path d="M70 55 h10 M70 65 h10" stroke="black" strokeWidth="2" />
-                        <path d="M40 50 Q52 40 60 50" stroke="black" strokeWidth="2.5" fill="none" />
-                        <polygon points="58,52 62,50 58,47" fill="black" />
-                      </svg>
-                      
-                      <h4 className="font-mono font-bold text-xs uppercase text-black/50 text-center mb-1">[open library api]</h4>
-                      <p className="font-mono text-[10px] text-center font-semibold leading-snug">API book data cleaning pipeline built with zero pandas dependencies.</p>
-                    </motion.div>
-                  </div>
-
-                  {/* Right Column: Text card */}
-                  <div className="flex flex-col justify-center items-start h-full w-full">
-                    <ProjectTextCard repoUrl="https://github.com/totaliyahtrash/openLibrary" rotateClass="rotate-[1.5deg]">
-                      <div className="absolute top-[-9px] right-[40px] w-16 h-5 paper-tape rotate-[-5deg] border-x border-black/10 z-20" />
-                      
-                      {/* Header Pill */}
-                      <div className="inline-flex items-center space-x-1.5 bg-[#00A7FE] text-white border-2 border-black rounded px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider mb-4 shadow-[2px_2px_0_#000] z-20 relative">
-                        <span>ETL Engine</span>
-                        <span>⚙️</span>
-                      </div>
-
-                      {/* Text Assembly Header */}
-                      <ScatteredWord 
-                        word="OPEN LIBRARY PIPELINE" 
-                        scrollProgress={scrollYProgress} 
-                        triggerRange={[0.33, 0.46, 0.70, 0.82]} 
-                        outputRange={[1.0, 0.0, 0.0, 1.0]} 
-                        sizeClass="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem]"
-                      />
-
-                      <p className="font-mono text-xs font-semibold leading-relaxed mb-6">
-                        A Python data pipeline fetching books from the Open Library Search API, cleaning response fields, and outputting to CSV and Parquet formats.
-                      </p>
-
-                      <div className="border-t-2 border-dashed border-black/25 pt-4 space-y-2">
-                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#00A7FE] font-bold">✶</span>
-                          <span><strong>auto pagination</strong>: automatically requests multiple pages of search results.</span>
-                        </div>
-                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#00A7FE] font-bold">✶</span>
-                          <span><strong>data cleaning</strong>: drops unneeded headers and resolves missing/empty fields.</span>
-                        </div>
-                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#00A7FE] font-bold">✶</span>
-                          <span><strong>saving formats</strong>: outputs to CSV as well as optimized schema-aware Parquet.</span>
-                        </div>
-                        <div className="flex items-start space-x-2 font-mono text-[11px] leading-tight">
-                          <span className="text-[#00A7FE] font-bold">✶</span>
-                          <span><strong>pure python de</strong>: zero shortcuts - uses requests, pyarrow, and csv packages.</span>
                         </div>
                       </div>
                     </ProjectTextCard>
