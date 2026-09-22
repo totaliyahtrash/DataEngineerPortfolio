@@ -45,7 +45,7 @@ function App() {
 
   return (
     <div 
-      className={`relative min-h-screen transition-colors duration-700 ease-out select-none overflow-x-clip ${
+      className={`relative min-h-screen md:transition-colors md:duration-700 md:ease-out select-none overflow-x-clip ${
         isDark ? 'bg-[#191919] text-white' : 'bg-[#7C3AED] text-white'
       }`}
     >

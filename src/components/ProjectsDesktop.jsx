@@ -104,7 +104,9 @@ const ProjectTextCard = ({ children, repoUrl, rotateClass }) => {
 export default function ProjectsDesktop() {
   const containerRef = useRef(null);
   const [isSlow, setIsSlow] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    return typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+  });
 
   useEffect(() => {
     setIsSlow(isSlowNetworkOrDevice());
@@ -161,7 +163,10 @@ export default function ProjectsDesktop() {
           </div>
 
           {/* Carousel Track */}
-          <div className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory px-6 pb-6 space-x-5 scroll-smooth w-full">
+          <div 
+            className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory px-6 pb-6 space-x-5 scroll-smooth w-full"
+            style={{ WebkitOverflowScrolling: 'touch', overscrollBehaviorX: 'contain' }}
+          >
             
             {/* PANEL 1: Tech Graveyard */}
             <div className="snap-center shrink-0 w-[85vw] max-w-[320px] bg-[#A5CF4E] border-4 border-black p-5 rounded-3xl relative overflow-hidden shadow-[5px_5px_0_#000] flex flex-col space-y-4">

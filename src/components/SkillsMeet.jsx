@@ -78,19 +78,7 @@ const AIAvatar = () => (
   </svg>
 );
 
-const CloudAvatar = () => (
-  <svg viewBox="0 0 100 100" className="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" fill="none">
-    <rect x="35" y="24" width="30" height="24" rx="4" fill="#ffd860" stroke="#1c1c1c" strokeWidth="2.5" />
-    <line x1="39" y1="31" x2="61" y2="31" stroke="#1c1c1c" strokeWidth="2" strokeLinecap="round" />
-    <line x1="39" y1="40" x2="61" y2="40" stroke="#1c1c1c" strokeWidth="2" strokeLinecap="round" />
-    <circle cx="43" cy="31" r="1" fill="#ff4081" />
-    <circle cx="43" cy="40" r="1" fill="#00e676" />
-    <path d="M20 70 A 14 14 0 0 1 30 44 A 20 20 0 0 1 70 44 A 14 14 0 0 1 80 70 Z" fill="#ffd860" stroke="#1c1c1c" strokeWidth="2.5" />
-    <circle cx="43" cy="58" r="2.5" fill="#1c1c1c" />
-    <circle cx="57" cy="58" r="2.5" fill="#1c1c1c" />
-    <path d="M48 64 C 49 66, 51 66, 52 64" stroke="#1c1c1c" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-  </svg>
-);
+
 
 const AwsAvatar = () => (
   <svg viewBox="0 0 100 100" className="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" fill="none">
@@ -248,19 +236,7 @@ const AIReaction = () => (
   </svg>
 );
 
-const CloudReaction = () => (
-  <svg viewBox="0 0 32 32" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" fill="none">
-    <path 
-      d="M9 20a4 4 0 01-1-7.87 6 6 0 0111.74-1.78 4 4 0 015.65 4.8A4 4 0 0123 20H9z" 
-      fill="#a5f3fc" 
-      stroke="#1c1c1e" 
-      strokeWidth="2.2" 
-      strokeLinejoin="round" 
-    />
-    <circle cx="12" cy="15" r="1" fill="#1c1c1e" />
-    <circle cx="16" cy="15" r="1" fill="#1c1c1e" />
-  </svg>
-);
+
 
 const WarehouseReaction = () => (
   <svg viewBox="0 0 32 32" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" fill="none">
@@ -306,7 +282,7 @@ export default function SkillsMeet() {
     if (!isMobile || isSlow) return;
     
     const interval = setInterval(() => {
-      const skills = ["Python", "Postgres", "AWS Cloud", "dbt", "Cloud", "Warehousing", "Power BI", "AI Orchestration"];
+      const skills = ["Python", "Postgres", "AWS Cloud", "dbt", "Warehousing", "Power BI", "AI Orchestration"];
       const randomSkill = skills[Math.floor(Math.random() * skills.length)];
       setHoveredCard(randomSkill);
       
@@ -359,11 +335,15 @@ export default function SkillsMeet() {
     }
   }, [controlsInView]);
 
-  // Typewriter effect state
+  // Typewriter effect state (optimized for mobile to prevent re-render scroll jank)
   const [typedText, setTypedText] = useState("");
   const fullText = "hey! i'm a data analyst and engineer working remotely from india, open to remote roles globally or relocation for the right team. let's sync up and build something solid!";
   
   useEffect(() => {
+    if (isMobile || isSlow) {
+      setTypedText(fullText);
+      return;
+    }
     if (showCards) {
       let index = 0;
       const interval = setInterval(() => {
@@ -372,10 +352,10 @@ export default function SkillsMeet() {
         if (index > fullText.length) {
           clearInterval(interval);
         }
-      }, 30);
+      }, 35);
       return () => clearInterval(interval);
     }
-  }, [showCards]);
+  }, [showCards, isMobile, isSlow]);
 
   // Handle raise hand toast
   useEffect(() => {
@@ -408,10 +388,9 @@ export default function SkillsMeet() {
     { name: "Postgres", bg: "bg-[#FFD860]", component: <PostgresAvatar />, reaction: <PostgresReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
     { name: "AWS Cloud", bg: "bg-[#FF9900]", component: <AwsAvatar />, reaction: <AwsReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
     { name: "dbt", bg: "bg-[#FF694A]", component: <DbtAvatar />, reaction: <DbtReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
-    { name: "Cloud", bg: "bg-[#A5CF4E]", component: <CloudAvatar />, reaction: <CloudReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
-    { name: "Warehousing", bg: "bg-[#38BDF8]", component: <WarehouseAvatar />, reaction: <WarehouseReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
-    { name: "Power BI", bg: "bg-[#F2C811]", component: <PowerBIAvatar />, reaction: <PowerBIReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
-    { name: "AI Orchestration", bg: "bg-[#A855F7]", component: <AIAvatar />, reaction: <AIReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
+    { name: "Warehousing", bg: "bg-[#38BDF8]", component: <WarehouseAvatar />, reaction: <WarehouseReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-4" },
+    { name: "Power BI", bg: "bg-[#F2C811]", component: <PowerBIAvatar />, reaction: <PowerBIReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-4" },
+    { name: "AI Orchestration", bg: "bg-[#A855F7]", component: <AIAvatar />, reaction: <AIReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
   ];
 
   // Letters of SKILLS! title
@@ -422,7 +401,7 @@ export default function SkillsMeet() {
     <section 
       ref={sectionRef}
       id="skills" 
-      className="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#191919] pt-24 pb-36 px-4 md:px-6 overflow-x-hidden select-none transition-all duration-700 section-contain"
+      className="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#191919] pt-24 pb-36 px-4 md:px-6 overflow-x-hidden select-none transition-all duration-700"
     >
       
       {/* 1. SKILLS! Header (Step 2 in sequence) */}
@@ -461,7 +440,7 @@ export default function SkillsMeet() {
         </AnimatePresence>
       </div>
 
-      {/* 2. Google Meet Participant Grid (2-col grid on mobile, 4-col on desktop) */}
+      {/* 2. Google Meet Participant Grid (2-col grid on mobile, 4-up 3-down on desktop) */}
       <div ref={gridRef} className="w-full max-w-5xl grid grid-cols-12 gap-2.5 xs:gap-3 sm:gap-4 md:gap-6 px-2.5 sm:px-6 md:px-8 z-10 mb-28 md:mb-16 min-h-[380px]">
         <AnimatePresence>
           {showCards && (
@@ -475,7 +454,7 @@ export default function SkillsMeet() {
                   transition={{ type: "spring", stiffness: 260, damping: 20, delay: idx * 0.08 }}
                   onMouseEnter={() => setHoveredCard(skill.name)}
                   onMouseLeave={() => setHoveredCard(null)}
-                  className={`relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/3] xs:aspect-[16/11] sm:aspect-[16/10] border-2 border-black shadow-[3px_3px_0px_#000] sm:shadow-[5px_5px_0px_#000] md:shadow-2xl flex items-center justify-center cursor-pointer group ${skill.gridClass}`}
+                  className={`relative rounded-xl sm:rounded-2xl overflow-hidden ${skill.name === 'AI Orchestration' ? 'aspect-[16/8] sm:aspect-[16/10]' : 'aspect-[4/3] xs:aspect-[16/11] sm:aspect-[16/10]'} border-2 border-black shadow-[3px_3px_0px_#000] sm:shadow-[5px_5px_0px_#000] md:shadow-2xl flex items-center justify-center cursor-pointer group ${skill.gridClass}`}
                 >
                   <div className={`absolute inset-0 ${skill.bg} transition-transform duration-300 group-hover:scale-105`} />
                   <div className="absolute inset-0 bg-[radial-gradient(#1c1c1c_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />

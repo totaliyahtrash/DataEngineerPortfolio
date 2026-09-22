@@ -229,15 +229,39 @@ html {
 
 /* Performance Adaptations for GPU rendering and rendering containment */
 .gpu-accelerated {
-  will-change: transform, opacity;
-  transform: translate3d(0, 0, 0);
+  transform: translateZ(0);
   backface-visibility: hidden;
-  perspective: 1000px;
 }
 
 .section-contain {
-  content-visibility: auto;
-  contain-intrinsic-size: 100vh;
+  contain: layout paint;
+}
+
+/* Mobile performance overrides: eliminate jitter, disable heavy GPU composition blurs & pause continuous keyframes during scroll */
+@media (max-width: 768px) {
+  /* Disable costly backdrop blurs on mobile devices to prevent GPU compositing stalls */
+  .backdrop-blur-sm,
+  .backdrop-blur,
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .paper-tape {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Simplify holo stamp on mobile: static gradient without infinite 400% background-position recalculation */
+  .holo-stamp-active {
+    animation: none !important;
+    background-size: 100% 100% !important;
+  }
+
+  /* Pause continuous floating/drifting/sparkling transforms on mobile to preserve 60fps scrolling */
+  .float-element,
+  .drift-element,
+  .sparkle-element,
+  .spin-slow {
+    animation-play-state: paused !important;
+  }
 }
 
 /* Hide native cursor when CustomCursor component is successfully active */

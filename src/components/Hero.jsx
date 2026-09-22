@@ -207,7 +207,7 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
   const springY = useSpring(50, { stiffness: 60, damping: 20 });
 
   const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
+    if (isMobile || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
