@@ -151,7 +151,7 @@ export default function ProjectsDesktop() {
     <>
       {isMobile ? (
         /* Mobile Viewport: Swipeable Horizontal Carousel */
-        <div id="projects" className="w-full bg-[#191919] py-16 flex flex-col section-contain overflow-hidden">
+        <div id="projects" className="w-full bg-[#191919] py-16 flex flex-col overflow-hidden">
           {/* Section Header */}
           <div className="w-full text-center mb-8 px-6">
             <span className="font-bubble text-white text-3xl font-black block tracking-tight uppercase drop-shadow-[2.5px_2.5px_0_#000]">
@@ -378,7 +378,7 @@ export default function ProjectsDesktop() {
         </div>
       ) : (
         /* Desktop Viewport: Sticky screen horizontal track scroll */
-        <div ref={containerRef} id="projects" className="relative h-[400vh] bg-[#191919] w-full section-contain">
+        <div ref={containerRef} id="projects" className="relative h-[400vh] bg-[#191919] w-full">
           {/* Sticky screen container */}
           <div className="sticky top-0 h-screen w-screen overflow-hidden flex items-center justify-start z-10">
             

@@ -19,11 +19,18 @@ const isSlowNetworkOrDevice = () => {
 };
 
 export default function CustomCursor() {
+  const isTouchOrMobile = typeof window !== 'undefined' && (
+    window.innerWidth < 768 || 
+    'ontouchstart' in window || 
+    (navigator.maxTouchPoints && navigator.maxTouchPoints > 0)
+  );
+
+  if (isTouchOrMobile) return null;
+
   const [isHovered, setIsHovered] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isSlow, setIsSlow] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   // Coordinate motion values (bypasses React render loop)
   const cursorX = useMotionValue(-100);
@@ -35,18 +42,10 @@ export default function CustomCursor() {
 
   useEffect(() => {
     setIsSlow(isSlowNetworkOrDevice());
-    
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
-    if (isMobile || isSlow) return;
+    if (isSlow) return;
 
     // Enable custom cursor styles (hides browser pointer)
     document.documentElement.classList.add('custom-cursor-active');

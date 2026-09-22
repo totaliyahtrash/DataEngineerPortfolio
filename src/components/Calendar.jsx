@@ -3,7 +3,9 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function Calendar() {
   const [hoveredId, setHoveredId] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    return typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+  });
   const sectionRef = useRef(null);
 
   // Parallax / Scroll Reveal for header
@@ -63,14 +65,18 @@ export default function Calendar() {
     <section 
       ref={sectionRef}
       id="experience" 
-      className="relative min-h-[100vh] w-full bg-[#FFD23F] py-20 px-4 sm:px-8 flex flex-col items-center justify-center overflow-hidden text-black z-20 select-none section-contain"
+      className="relative min-h-[100vh] w-full bg-[#FFD23F] py-20 px-4 sm:px-8 flex flex-col items-center justify-center overflow-hidden text-black z-20 select-none"
     >
       {/* Background dot grid pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#000000_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-10 pointer-events-none z-0" />
 
       {/* A. Bubbly inline SVG Header ("EXPERIENCE") */}
       <motion.div 
-        style={{ y: headerY, opacity: headerOpacity }}
+        style={!isMobile ? { y: headerY, opacity: headerOpacity } : {}}
+        initial={isMobile ? { opacity: 0, y: 20 } : false}
+        whileInView={isMobile ? { opacity: 1, y: 0 } : false}
+        viewport={{ once: true, margin: "0px" }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         className="w-full max-w-3xl mb-10 px-4 flex items-center justify-center z-10"
       >
         <svg 

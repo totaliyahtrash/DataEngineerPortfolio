@@ -977,36 +977,44 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
         springY.set(50);
       }}
       className="relative w-full h-[100vh] flex items-center justify-center overflow-hidden graph-paper-dark-bg cursor-default"
-      style={{ perspective: "1200px" }}
+      style={{ perspective: isMobile ? "none" : "1200px" }}
     >
       
       {/* 1. Neobrutalist Block Shatter Reveal */}
-      <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 z-40 pointer-events-none overflow-hidden">
-        {Array.from({ length: 9 }).map((_, i) => {
-          const row = Math.floor(i / 3);
-          const col = i % 3;
-          const staggerCoef = isMobile ? 0.04 : 0.08;
-          const baseDelay = isMobile ? 0.05 : 0.1;
-          const delay = baseDelay + (row + col) * staggerCoef;
-          return (
-            <motion.div
-              key={i}
-              initial={{ scale: 1, opacity: 1 }}
-              animate={{ 
-                scale: 0, 
-                opacity: 0,
-                rotate: (row + col) % 2 === 0 ? 10 : -10
-              }}
-              transition={{ 
-                duration: isMobile ? 0.35 : 0.5,
-                delay: delay,
-                ease: [0.34, 1.56, 0.64, 1]
-              }}
-              className="bg-[#7C3AED] border-[3px] border-black w-full h-full"
-            />
-          );
-        })}
-      </div>
+      {!isMobile ? (
+        <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 z-40 pointer-events-none overflow-hidden">
+          {Array.from({ length: 9 }).map((_, i) => {
+            const row = Math.floor(i / 3);
+            const col = i % 3;
+            const delay = 0.1 + (row + col) * 0.08;
+            return (
+              <motion.div
+                key={i}
+                initial={{ scale: 1, opacity: 1 }}
+                animate={{ 
+                  scale: 0, 
+                  opacity: 0,
+                  rotate: (row + col) % 2 === 0 ? 10 : -10
+                }}
+                transition={{ 
+                  duration: 0.5,
+                  delay: delay,
+                  ease: [0.34, 1.56, 0.64, 1]
+                }}
+                className="bg-[#7C3AED] border-[3px] border-black w-full h-full"
+              />
+            );
+          })}
+        </div>
+      ) : (
+        /* Lightweight single-curtain neo-brutalist upward slide for mobile (60/120fps hardware composited) */
+        <motion.div
+          initial={{ y: "0%" }}
+          animate={{ y: "-100%" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          className="absolute inset-0 z-40 bg-[#7C3AED] border-b-4 border-black pointer-events-none"
+        />
+      )}
 
       {/* 2. Scrapbook Sticky Notes */}
       <motion.div
@@ -1038,11 +1046,11 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
       </motion.div>
 
       {/* 3. Dashed Data Pipelines */}
-      {!isSlow && (
+      {!isSlow && !isMobile && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: isMobile ? 0.4 : 0.8 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
           className="absolute inset-0 pointer-events-none select-none z-0"
         >
           <svg className="absolute inset-0 w-full h-full opacity-25">
@@ -1072,9 +1080,9 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
       {/* 4. Center DHRUV SAINI Card Block */}
       <motion.div 
         style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
+          rotateX: isMobile ? 0 : rotateX,
+          rotateY: isMobile ? 0 : rotateY,
+          transformStyle: isMobile ? "flat" : "preserve-3d",
         }}
         className="absolute inset-0 flex flex-col items-center justify-center select-none z-20 w-full px-4 space-y-6 pointer-events-none"
       >
@@ -1107,21 +1115,23 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
         )}
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
+          initial={{ opacity: 0, scale: isMobile ? 0.95 : 0.9, rotate: isMobile ? 0 : -3 }}
           animate={{ 
             opacity: 1, 
-            rotate: -1.5,
+            scale: 1,
+            rotate: isMobile ? 0 : -1.5,
             ...cardSquish
           }}
           transition={{ 
             type: "tween", 
-            duration: 0.5,
-            ease: "easeOut"
+            duration: isMobile ? 0.4 : 0.5,
+            ease: "easeOut",
+            delay: isMobile ? 0.15 : 0
           }}
-          whileHover={{ scale: 1.03, rotate: 1, transition: { duration: 0.2 } }}
-          className="p-8 sm:p-12 bg-white border-4 border-black text-black rounded-2xl shadow-[8px_8px_0px_rgba(0,0,0,1)] relative cursor-default flex flex-col items-center justify-center pointer-events-auto"
+          whileHover={!isMobile ? { scale: 1.03, rotate: 1, transition: { duration: 0.2 } } : {}}
+          className="p-8 sm:p-12 bg-white border-4 border-black text-black rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_rgba(0,0,0,1)] relative cursor-default flex flex-col items-center justify-center pointer-events-auto"
           style={{ 
-            transform: "translateZ(80px)",
+            transform: isMobile ? "none" : "translateZ(80px)",
           }}
         >
           {/* Paper Tapes */}

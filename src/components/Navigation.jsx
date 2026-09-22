@@ -265,7 +265,7 @@ export default function Navigation({ setMarioTriggered }) {
 
         {/* Center Nav Pill */}
         <motion.div 
-          layout
+          layout={!isMobile}
           transition={{ type: "spring", stiffness: 380, damping: 30 }}
           className="bg-white text-black rounded-full px-3 py-1.5 md:px-5 md:py-2.5 flex items-center shadow-lg border border-black/5 pointer-events-auto select-none max-w-full"
         >

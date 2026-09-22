@@ -61,16 +61,16 @@ const InteractiveSocialCard = ({ card, index, isDeckHovered, isDesktop, isWelcom
   const sweepHoloMVal = useMotionValue("-50% -50%");
   const activeHoloBgPos = isWelcoming ? sweepHoloMVal : hoverHoloPos;
 
-  // Trigger welcome holo sweep once on mount
+  // Trigger welcome holo sweep once on mount (desktop only)
   useEffect(() => {
-    if (isWelcoming && !isSlow) {
+    if (isWelcoming && !isSlow && isDesktop) {
       sweepHoloMVal.set("-50% -50%");
       animate(sweepHoloMVal, "150% 150%", {
         duration: 1.5,
         ease: "easeInOut"
       });
     }
-  }, [isWelcoming, isSlow]);
+  }, [isWelcoming, isSlow, isDesktop]);
 
   const handleMouseMove = (e) => {
     if (!isDesktop) return;
@@ -317,7 +317,7 @@ export default function Footer() {
   return (
     <section
       id="contact"
-      className="relative min-h-[90vh] w-full bg-gradient-to-br from-[#0a0b12] via-[#101222] to-[#1a1c32] border-t-4 border-black flex flex-col justify-between overflow-hidden text-black select-none font-mono py-16 pb-0 animate-fade-in section-contain"
+      className="relative min-h-[90vh] w-full bg-gradient-to-br from-[#0a0b12] via-[#101222] to-[#1a1c32] border-t-4 border-black flex flex-col justify-between overflow-hidden text-black select-none font-mono py-16 pb-0 animate-fade-in"
     >
       {/* Hide Scrollbar Style Block */}
       <style dangerouslySetInnerHTML={{__html: `

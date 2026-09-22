@@ -10,14 +10,14 @@ export default function BelowFold() {
   const rotations2 = [-3, 2, -4, 1, -2, 3, -1, 4, -2, 3, -1, 2, -3];
 
   return (
-    <section className="relative w-full min-h-[60vh] flex flex-col items-center justify-center bg-[#7C3AED] pt-16 pb-24 px-4 sm:px-6 overflow-hidden section-contain">
+    <section className="relative w-full min-h-[60vh] flex flex-col items-center justify-center bg-[#7C3AED] pt-16 pb-24 px-4 sm:px-6 overflow-hidden">
       
       {/* Title: DATA ANALYSIS & ENGINEERING */}
       <motion.div 
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, margin: "-20px" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="flex flex-col items-center justify-center text-white leading-[0.75] text-[8vw] xs:text-[7.5vw] sm:text-[6.5vw] md:text-[5.8vw] lg:text-[4.8vw] tracking-[-0.05em] font-black uppercase text-center w-full select-none mb-10 z-10"
         style={{ fontFamily: "'Unbounded', sans-serif" }}
       >
@@ -58,10 +58,10 @@ export default function BelowFold() {
 
       {/* Humanized Subtext Paragraph (Scrapbook Paper Card) */}
       <motion.div
-        initial={{ opacity: 0, y: 30, rotate: 0 }}
+        initial={{ opacity: 0, y: 20, rotate: 0 }}
         whileInView={{ opacity: 1, y: 0, rotate: 1.5 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+        viewport={{ once: true, margin: "-20px" }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
         className="relative w-full max-w-lg mx-auto p-6 md:p-8 bg-white border-3 border-black text-black shadow-[6px_6px_0px_0px_#000000] rounded rotate-[1.5deg] z-10 my-4"
       >
         <div className="absolute top-[-9px] left-1/2 -translate-x-1/2 w-24 h-5 paper-tape rotate-[-2deg] border-x border-black/10" />

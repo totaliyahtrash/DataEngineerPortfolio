@@ -233,10 +233,6 @@ html {
   backface-visibility: hidden;
 }
 
-.section-contain {
-  contain: layout paint;
-}
-
 /* Mobile performance overrides: eliminate jitter, disable heavy GPU composition blurs & pause continuous keyframes during scroll */
 @media (max-width: 768px) {
   /* Disable costly backdrop blurs on mobile devices to prevent GPU compositing stalls */

@@ -124,16 +124,17 @@ export default function Bio() {
   return (
     <section 
       id="bio" 
-      className="relative min-h-[100vh] w-full bg-[#faf9f5] border-t-4 border-black py-24 px-6 sm:px-12 flex flex-col items-center justify-center overflow-hidden text-black z-20 select-none section-contain"
+      className="relative min-h-[100vh] w-full bg-[#faf9f5] border-t-4 border-black py-24 px-6 sm:px-12 flex flex-col items-center justify-center overflow-hidden text-black z-20 select-none"
     >
       {/* Background dot grid pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#000000_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-5 pointer-events-none z-0" />
 
       {/* Title */}
       <motion.div 
-        initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+        initial={{ opacity: 0, scale: isMobile ? 0.95 : 0.8, rotate: -5 }}
         whileInView={{ opacity: 1, scale: 1, rotate: -2 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: isMobile ? "0px" : "-50px" }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         className="bg-[#A5CF4E] border-3 border-black px-8 py-3 rounded shadow-[5px_5px_0_#000] rotate-[-2deg] mb-16 relative z-20"
       >
         <div className="absolute top-[-9px] left-1/2 -translate-x-1/2 w-16 h-4.5 paper-tape rotate-[3deg] border-x border-black/10" />
@@ -313,10 +314,10 @@ export default function Bio() {
           ) : (
             /* Mobile View: Vertical dashboard with top laptop and bottom selectable badges */
             <motion.div 
-              initial={{ y: 100, opacity: 0, scale: 0.85 }}
-              whileInView={{ y: 0, opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ type: "spring", stiffness: 80, damping: 15, delay: 0.35 }}
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="flex flex-col items-center justify-center w-full relative z-20 max-w-sm mx-auto"
             >
               

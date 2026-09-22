@@ -298,34 +298,46 @@ export default function SkillsMeet() {
   
   // Animation states for the sequential introduction reveal
   const [startSequence, setStartSequence] = useState(false);
-  const [showTitle, setShowTitle] = useState(false);
-  const [showCards, setShowCards] = useState(false);
-  const [hudPhase, setHudPhase] = useState("hidden"); // "hidden" | "red-pop" | "expanded"
+  const [showTitle, setShowTitle] = useState(() => isMobile);
+  const [showCards, setShowCards] = useState(() => isMobile);
+  const [hudPhase, setHudPhase] = useState(() => isMobile ? "expanded" : "hidden"); // "hidden" | "red-pop" | "expanded"
 
   const sectionRef = useRef(null);
   const gridRef = useRef(null);
   const controlsRef = useRef(null);
 
-  const titleInView = useInView(sectionRef, { once: true, margin: "-10% 0px -10% 0px" });
-  const gridInView = useInView(gridRef, { once: true, margin: "-15% 0px -15% 0px" });
-  const controlsInView = useInView(controlsRef, { once: true, margin: "-10% 0px -10% 0px" });
+  const titleInView = useInView(sectionRef, { once: true, margin: isMobile ? "0px" : "-10% 0px -10% 0px" });
+  const gridInView = useInView(gridRef, { once: true, margin: isMobile ? "0px" : "-15% 0px -15% 0px" });
+  const controlsInView = useInView(controlsRef, { once: true, margin: isMobile ? "0px" : "-10% 0px -10% 0px" });
 
   // Stage 1: Title Reveal
   useEffect(() => {
+    if (isMobile) {
+      setShowTitle(true);
+      return;
+    }
     if (titleInView) {
       setShowTitle(true);
     }
-  }, [titleInView]);
+  }, [titleInView, isMobile]);
 
   // Stage 2: Cards Grid Reveal
   useEffect(() => {
+    if (isMobile) {
+      setShowCards(true);
+      return;
+    }
     if (gridInView) {
       setShowCards(true);
     }
-  }, [gridInView]);
+  }, [gridInView, isMobile]);
 
   // Stage 3: HUD Controls & Typewriter Reveal
   useEffect(() => {
+    if (isMobile) {
+      setHudPhase("expanded");
+      return;
+    }
     if (controlsInView) {
       setHudPhase("red-pop");
       const timer = setTimeout(() => {
@@ -333,7 +345,7 @@ export default function SkillsMeet() {
       }, 500);
       return () => clearTimeout(timer);
     }
-  }, [controlsInView]);
+  }, [controlsInView, isMobile]);
 
   // Typewriter effect state (optimized for mobile to prevent re-render scroll jank)
   const [typedText, setTypedText] = useState("");
@@ -442,50 +454,78 @@ export default function SkillsMeet() {
 
       {/* 2. Google Meet Participant Grid (2-col grid on mobile, 4-up 3-down on desktop) */}
       <div ref={gridRef} className="w-full max-w-5xl grid grid-cols-12 gap-2.5 xs:gap-3 sm:gap-4 md:gap-6 px-2.5 sm:px-6 md:px-8 z-10 mb-28 md:mb-16 min-h-[380px]">
-        <AnimatePresence>
-          {showCards && (
-            <>
-              {skillsList.map((skill, idx) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, scale: 0.7, y: 30 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.7 }}
-                  transition={{ type: "spring", stiffness: 260, damping: 20, delay: idx * 0.08 }}
-                  onMouseEnter={() => setHoveredCard(skill.name)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  className={`relative rounded-xl sm:rounded-2xl overflow-hidden ${skill.name === 'AI Orchestration' ? 'aspect-[16/8] sm:aspect-[16/10]' : 'aspect-[4/3] xs:aspect-[16/11] sm:aspect-[16/10]'} border-2 border-black shadow-[3px_3px_0px_#000] sm:shadow-[5px_5px_0px_#000] md:shadow-2xl flex items-center justify-center cursor-pointer group ${skill.gridClass}`}
-                >
-                  <div className={`absolute inset-0 ${skill.bg} transition-transform duration-300 group-hover:scale-105`} />
-                  <div className="absolute inset-0 bg-[radial-gradient(#1c1c1c_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
-                  
-                  <div className="relative z-10 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1">
-                    {skill.component}
-                  </div>
+        {isMobile ? (
+          /* Mobile: Instant static layout with zero height recalculation or scroll judder */
+          skillsList.map((skill) => (
+            <div
+              key={skill.name}
+              className={`relative rounded-xl overflow-hidden ${skill.name === 'AI Orchestration' ? 'aspect-[16/8]' : 'aspect-[4/3] xs:aspect-[16/11]'} border-2 border-black shadow-[3px_3px_0px_#000] flex items-center justify-center ${skill.gridClass}`}
+            >
+              <div className={`absolute inset-0 ${skill.bg}`} />
+              <div className="absolute inset-0 bg-[radial-gradient(#1c1c1c_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
+              
+              <div className="relative z-10">
+                {skill.component}
+              </div>
 
-                  <div className="absolute bottom-1.5 left-1.5 sm:bottom-3 sm:left-3 bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 sm:px-2.5 sm:py-1 text-white font-mono text-[8px] xs:text-[9px] sm:text-[10px] md:text-xs tracking-wider z-20 flex items-center space-x-1 sm:space-x-1.5 border border-white/10 max-w-[92%]">
-                    <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-                    <span className="truncate">{skill.name}</span>
-                  </div>
+              <div className="absolute bottom-1.5 left-1.5 bg-black/75 rounded px-1.5 py-0.5 text-white font-mono text-[8px] xs:text-[9px] tracking-wider z-20 flex items-center space-x-1 border border-white/10 max-w-[92%]">
+                <span className="w-1 h-1 rounded-full bg-green-400 shrink-0" />
+                <span className="truncate">{skill.name}</span>
+              </div>
 
-                  <AnimatePresence>
-                    {hoveredCard === skill.name && (
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0, y: 10 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0, y: 10 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                        className="absolute top-1.5 left-1.5 sm:top-3 sm:left-3 bg-white border-2 border-black rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center text-xs sm:text-lg z-30 shadow-md"
-                      >
-                        {skill.reaction}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
-            </>
-          )}
-        </AnimatePresence>
+              {hoveredCard === skill.name && (
+                <div className="absolute top-1.5 left-1.5 bg-white border border-black rounded-full w-6 h-6 flex items-center justify-center text-xs z-30 shadow-md">
+                  {skill.reaction}
+                </div>
+              )}
+            </div>
+          ))
+        ) : (
+          <AnimatePresence>
+            {showCards && (
+              <>
+                {skillsList.map((skill, idx) => (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, scale: 0.7, y: 30 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.7 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 20, delay: idx * 0.08 }}
+                    onMouseEnter={() => setHoveredCard(skill.name)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                    className={`relative rounded-xl sm:rounded-2xl overflow-hidden ${skill.name === 'AI Orchestration' ? 'aspect-[16/8] sm:aspect-[16/10]' : 'aspect-[4/3] xs:aspect-[16/11] sm:aspect-[16/10]'} border-2 border-black shadow-[3px_3px_0px_#000] sm:shadow-[5px_5px_0px_#000] md:shadow-2xl flex items-center justify-center cursor-pointer group ${skill.gridClass}`}
+                  >
+                    <div className={`absolute inset-0 ${skill.bg} transition-transform duration-300 group-hover:scale-105`} />
+                    <div className="absolute inset-0 bg-[radial-gradient(#1c1c1c_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
+                    
+                    <div className="relative z-10 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1">
+                      {skill.component}
+                    </div>
+
+                    <div className="absolute bottom-1.5 left-1.5 sm:bottom-3 sm:left-3 bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 sm:px-2.5 sm:py-1 text-white font-mono text-[8px] xs:text-[9px] sm:text-[10px] md:text-xs tracking-wider z-20 flex items-center space-x-1 sm:space-x-1.5 border border-white/10 max-w-[92%]">
+                      <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
+                      <span className="truncate">{skill.name}</span>
+                    </div>
+
+                    <AnimatePresence>
+                      {hoveredCard === skill.name && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0, y: 10 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0, y: 10 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                          className="absolute top-1.5 left-1.5 sm:top-3 sm:left-3 bg-white border-2 border-black rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center text-xs sm:text-lg z-30 shadow-md"
+                        >
+                          {skill.reaction}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))}
+              </>
+            )}
+          </AnimatePresence>
+        )}
       </div>
 
       {/* 3. Control Bar Expansion HUD (Sticks strictly inside Skills Component - STICKY) */}
