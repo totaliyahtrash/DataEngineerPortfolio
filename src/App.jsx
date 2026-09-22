@@ -45,9 +45,7 @@ function App() {
 
   return (
     <div 
-      className={`relative min-h-screen md:transition-colors md:duration-700 md:ease-out select-none overflow-x-clip ${
-        isDark ? 'bg-[#191919] text-white' : 'bg-[#7C3AED] text-white'
-      }`}
+      className="relative min-h-screen bg-[#191919] text-white select-none overflow-x-clip"
     >
       {/* Dynamic Physics-based Custom Cursor */}
       <CustomCursor />

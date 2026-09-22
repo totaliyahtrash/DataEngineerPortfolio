@@ -61,16 +61,16 @@ const InteractiveSocialCard = ({ card, index, isDeckHovered, isDesktop, isWelcom
   const sweepHoloMVal = useMotionValue("-50% -50%");
   const activeHoloBgPos = isWelcoming ? sweepHoloMVal : hoverHoloPos;
 
-  // Trigger welcome holo sweep once on mount (desktop only)
+  // Trigger welcome holo sweep once on mount
   useEffect(() => {
-    if (isWelcoming && !isSlow && isDesktop) {
+    if (isWelcoming && !isSlow) {
       sweepHoloMVal.set("-50% -50%");
       animate(sweepHoloMVal, "150% 150%", {
         duration: 1.5,
         ease: "easeInOut"
       });
     }
-  }, [isWelcoming, isSlow, isDesktop]);
+  }, [isWelcoming, isSlow]);
 
   const handleMouseMove = (e) => {
     if (!isDesktop) return;
