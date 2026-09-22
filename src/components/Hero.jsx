@@ -200,15 +200,6 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // One-time opening shatter reveal completion state
-  const [revealDone, setRevealDone] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setRevealDone(true);
-    }, 1100);
-    return () => clearTimeout(timer);
-  }, []);
-
   // Card mouse tilt states
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [isHovered, setIsHovered] = useState(false);
@@ -988,43 +979,7 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
       className="relative w-full h-[100vh] flex items-center justify-center overflow-hidden graph-paper-dark-bg cursor-default"
       style={{ perspective: isMobile ? "none" : "1200px" }}
     >
-      
-      {/* 1. Neobrutalist Block Shatter Reveal (Cleanly unmounts once completed) */}
-      <AnimatePresence>
-        {!revealDone && (
-          <motion.div 
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="absolute inset-0 grid grid-cols-3 grid-rows-3 z-40 pointer-events-none overflow-hidden"
-          >
-            {Array.from({ length: 9 }).map((_, i) => {
-              const row = Math.floor(i / 3);
-              const col = i % 3;
-              const delay = 0.05 + (row + col) * 0.06;
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ scale: 1, opacity: 1 }}
-                  animate={{ 
-                    scale: 0, 
-                    opacity: 0,
-                    rotate: (row + col) % 2 === 0 ? 12 : -12
-                  }}
-                  transition={{ 
-                    duration: 0.45,
-                    delay: delay,
-                    ease: [0.34, 1.56, 0.64, 1]
-                  }}
-                  onAnimationComplete={i === 8 ? () => setRevealDone(true) : undefined}
-                  className="bg-[#7C3AED] border-[3px] border-black w-full h-full"
-                />
-              );
-            })}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* 2. Scrapbook Sticky Notes */}
+      {/* 1. Scrapbook Sticky Notes */}
       <motion.div
         initial={{ opacity: 0, scale: 0, rotate: 15 }}
         animate={{ opacity: 1, scale: 1, rotate: -8 }}

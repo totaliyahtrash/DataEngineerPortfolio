@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useState } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import BelowFold from './components/BelowFold';
@@ -10,38 +10,7 @@ import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
   const [marioTriggered, setMarioTriggered] = useState(false);
-  const skillsRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Trigger background color transition when the skills meet section is 15% in view
-        if (entry.isIntersecting) {
-          setIsDark(true);
-        } else {
-          // If we scroll back up past the skills section, revert to hotpink
-          if (entry.boundingClientRect.top > 0) {
-            setIsDark(false);
-          }
-        }
-      },
-      {
-        threshold: 0.15,
-      }
-    );
-
-    if (skillsRef.current) {
-      observer.observe(skillsRef.current);
-    }
-
-    return () => {
-      if (skillsRef.current) {
-        observer.unobserve(skillsRef.current);
-      }
-    };
-  }, []);
 
   return (
     <div 
@@ -62,9 +31,7 @@ function App() {
         <BelowFold />
 
         {/* Google Meet Skills Section */}
-        <div ref={skillsRef}>
-          <SkillsMeet />
-        </div>
+        <SkillsMeet />
 
         {/* Horizontal Scrolling Projects Carousel */}
         <ProjectsDesktop />

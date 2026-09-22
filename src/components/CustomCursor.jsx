@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 // Helper to detect slow connection or low-performance device
@@ -19,18 +19,19 @@ const isSlowNetworkOrDevice = () => {
 };
 
 export default function CustomCursor() {
-  const isTouchOrMobile = typeof window !== 'undefined' && (
-    window.innerWidth < 768 || 
-    'ontouchstart' in window || 
-    (navigator.maxTouchPoints && navigator.maxTouchPoints > 0)
-  );
-
-  if (isTouchOrMobile) return null;
+  const [isTouchOrMobile, setIsTouchOrMobile] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return (
+      window.innerWidth < 768 || 
+      'ontouchstart' in window || 
+      (navigator.maxTouchPoints && navigator.maxTouchPoints > 0)
+    );
+  });
 
   const [isHovered, setIsHovered] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isSlow, setIsSlow] = useState(false);
+  const [isSlow] = useState(() => isSlowNetworkOrDevice());
 
   // Coordinate motion values (bypasses React render loop)
   const cursorX = useMotionValue(-100);
@@ -41,11 +42,19 @@ export default function CustomCursor() {
   const boxY = useSpring(cursorY, { stiffness: 140, damping: 18 });
 
   useEffect(() => {
-    setIsSlow(isSlowNetworkOrDevice());
+    const handleResize = () => {
+      setIsTouchOrMobile(
+        window.innerWidth < 768 || 
+        'ontouchstart' in window || 
+        (navigator.maxTouchPoints && navigator.maxTouchPoints > 0)
+      );
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
-    if (isSlow) return;
+    if (isTouchOrMobile || isSlow) return;
 
     // Enable custom cursor styles (hides browser pointer)
     document.documentElement.classList.add('custom-cursor-active');
@@ -82,9 +91,9 @@ export default function CustomCursor() {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, [isMobile, isSlow, isVisible, cursorX, cursorY]);
+  }, [isTouchOrMobile, isSlow, isVisible, cursorX, cursorY]);
 
-  if (isMobile || isSlow || !isVisible) {
+  if (isTouchOrMobile || isSlow || !isVisible) {
     return null;
   }
 
