@@ -20,7 +20,7 @@ const isSlowNetworkOrDevice = () => {
 
 // SVG Assets for technology characters
 const PythonAvatar = () => (
-  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
+  <svg viewBox="0 0 100 100" className="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" fill="none">
     <path d="M20 70 C 20 40, 50 30, 50 50 C 50 70, 80 60, 80 30" stroke="#1c1c1c" strokeWidth="4" strokeLinecap="round" />
     <path d="M20 70 C 20 40, 50 30, 50 50 C 50 70, 80 60, 80 30" stroke="#005b9f" strokeWidth="2.5" strokeLinecap="round" />
     <circle cx="50" cy="50" r="16" fill="#005b9f" stroke="#1c1c1c" strokeWidth="2.5" />
@@ -38,7 +38,7 @@ const PythonAvatar = () => (
 );
 
 const PostgresAvatar = () => (
-  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
+  <svg viewBox="0 0 100 100" className="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" fill="none">
     <circle cx="32" cy="50" r="16" fill="#ff73b5" stroke="#1c1c1c" strokeWidth="2.5" />
     <circle cx="68" cy="50" r="16" fill="#ff73b5" stroke="#1c1c1c" strokeWidth="2.5" />
     <circle cx="32" cy="50" r="10" fill="#ff4081" />
@@ -56,7 +56,7 @@ const PostgresAvatar = () => (
 );
 
 const AIAvatar = () => (
-  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
+  <svg viewBox="0 0 100 100" className="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" fill="none">
     {/* Robot head */}
     <rect x="25" y="30" width="50" height="42" rx="8" fill="#a855f7" stroke="#1c1c1e" strokeWidth="2.5" />
     {/* Robot ears/antennas */}
@@ -79,7 +79,7 @@ const AIAvatar = () => (
 );
 
 const CloudAvatar = () => (
-  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
+  <svg viewBox="0 0 100 100" className="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" fill="none">
     <rect x="35" y="24" width="30" height="24" rx="4" fill="#ffd860" stroke="#1c1c1c" strokeWidth="2.5" />
     <line x1="39" y1="31" x2="61" y2="31" stroke="#1c1c1c" strokeWidth="2" strokeLinecap="round" />
     <line x1="39" y1="40" x2="61" y2="40" stroke="#1c1c1c" strokeWidth="2" strokeLinecap="round" />
@@ -92,10 +92,67 @@ const CloudAvatar = () => (
   </svg>
 );
 
+const AwsAvatar = () => (
+  <svg viewBox="0 0 100 100" className="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" fill="none">
+    {/* Cloud Body with AWS Slate */}
+    <path 
+      d="M25 64 C18 64 14 58 16 50 C17 43 23 39 30 40 C33 30 44 24 55 26 C64 28 71 35 72 44 C78 44 84 49 84 55 C84 62 79 66 72 66 Z" 
+      fill="#232f3e" 
+      stroke="#1c1c1e" 
+      strokeWidth="2.5" 
+    />
+    {/* Cute Face */}
+    <circle cx="43" cy="46" r="2.2" fill="#fff" />
+    <circle cx="57" cy="46" r="2.2" fill="#fff" />
+    <circle cx="37" cy="49" r="1.5" fill="#ff9900" opacity="0.8" />
+    <circle cx="63" cy="49" r="1.5" fill="#ff9900" opacity="0.8" />
+    {/* AWS Iconic Curved Smile Arrow */}
+    <motion.path 
+      d="M38 56 Q50 63 62 56" 
+      stroke="#ff9900" 
+      strokeWidth="2.8" 
+      strokeLinecap="round" 
+      fill="none"
+      animate={{ d: ["M38 56 Q50 63 62 56", "M38 55 Q50 65 62 55", "M38 56 Q50 63 62 56"] }}
+      transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+    />
+    <polygon points="61,54 65,57 61,60" fill="#ff9900" />
+    {/* Small AWS badge on top */}
+    <rect x="40" y="16" width="20" height="9" rx="2" fill="#ff9900" stroke="#1c1c1e" strokeWidth="1.5" />
+    <text x="50" y="23" textAnchor="middle" fill="#1c1c1e" fontSize="6.5" fontWeight="900" fontFamily="monospace">AWS</text>
+  </svg>
+);
 
+const DbtAvatar = () => (
+  <svg viewBox="0 0 100 100" className="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" fill="none">
+    {/* Neobrutalist dbt isometric transformation diamond/cube */}
+    {/* Top Face */}
+    <polygon points="50,22 76,35 50,48 24,35" fill="#ff8a73" stroke="#1c1c1e" strokeWidth="2.5" />
+    {/* Left Face */}
+    <polygon points="24,35 50,48 50,78 24,65" fill="#ff694a" stroke="#1c1c1e" strokeWidth="2.5" />
+    {/* Right Face */}
+    <polygon points="50,48 76,35 76,65 50,78" fill="#e05336" stroke="#1c1c1e" strokeWidth="2.5" />
+    {/* Cute Face on the Left/Front Face */}
+    <circle cx="34" cy="54" r="2" fill="#1c1c1e" />
+    <circle cx="43" cy="58" r="2" fill="#1c1c1e" />
+    <path d="M36 61 Q 39 64 42 61" stroke="#1c1c1e" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+    {/* Transformation flow dot / sparkle */}
+    <motion.path 
+      d="M70 20 L73 24 L77 24 L74 27 L75 31 L71 29 L67 31 L68 27 L65 24 L69 24 Z" 
+      fill="#ffd860" 
+      stroke="#1c1c1e" 
+      strokeWidth="1.5"
+      animate={{ scale: [0.9, 1.2, 0.9], rotate: [0, 15, 0] }}
+      transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+    />
+    {/* "dbt" label pill at the bottom */}
+    <rect x="36" y="81" width="28" height="11" rx="2" fill="#fff" stroke="#1c1c1e" strokeWidth="2" />
+    <text x="50" y="89" textAnchor="middle" fill="#ff694a" fontSize="7.5" fontWeight="900" fontFamily="monospace">dbt</text>
+  </svg>
+);
 
 const WarehouseAvatar = () => (
-  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
+  <svg viewBox="0 0 100 100" className="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" fill="none">
     <polygon points="50,20 80,32 50,44 20,32" fill="#ffa500" stroke="#1c1c1c" strokeWidth="2.5" />
     <polygon points="50,44 80,32 80,68 50,80" fill="#cc7a00" stroke="#1c1c1c" strokeWidth="2.5" />
     <polygon points="20,32 50,44 50,80 20,68" fill="#ffb833" stroke="#1c1c1c" strokeWidth="2.5" />
@@ -106,22 +163,15 @@ const WarehouseAvatar = () => (
   </svg>
 );
 
-
-
 const PowerBIAvatar = () => (
-  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 object-contain" fill="none">
+  <svg viewBox="0 0 100 100" className="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" fill="none">
     {/* Neobrutalist Power BI Bars */}
-    {/* Bar 1 (Shortest, Yellow-Gold) */}
     <rect x="25" y="55" width="12" height="25" rx="1.5" fill="#f2c811" stroke="#1c1c1e" strokeWidth="2.5" />
-    {/* Bar 2 (Medium, Yellow-Orange) */}
     <rect x="44" y="38" width="12" height="42" rx="1.5" fill="#f2a900" stroke="#1c1c1e" strokeWidth="2.5" />
-    {/* Bar 3 (Tallest, Dark Orange) */}
     <rect x="63" y="20" width="12" height="60" rx="1.5" fill="#e07c00" stroke="#1c1c1e" strokeWidth="2.5" />
 
-    {/* Highlight details on bars */}
     <path d="M29 59 v17 M48 42 v34 M67 24 v52" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" opacity="0.4" />
     
-    {/* Cute face on the tallest bar */}
     <circle cx="66" cy="27" r="1.5" fill="#1c1c1e" />
     <circle cx="72" cy="27" r="1.5" fill="#1c1c1e" />
     <path d="M67 31 Q69 32.5 71 31" stroke="#1c1c1e" strokeWidth="1" strokeLinecap="round" />
@@ -129,7 +179,7 @@ const PowerBIAvatar = () => (
 );
 
 const PythonReaction = () => (
-  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+  <svg viewBox="0 0 32 32" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" fill="none">
     <path 
       d="M8 12c0-3 3-5 6-5s6 2 6 5v6c0 3-3 5-6 5s-6-2-6-5v-6z" 
       fill="#22c55e" 
@@ -140,13 +190,13 @@ const PythonReaction = () => (
       d="M14 23c0 2 2 3 4 3s4-1 4-3v-6" 
       stroke="#22c55e" 
       strokeWidth="4" 
-      strokeLinecap="round"
+      strokeLinecap="round" 
     />
     <path 
       d="M14 23c0 2 2 3 4 3s4-1 4-3v-6" 
       stroke="#1c1c1e" 
       strokeWidth="2" 
-      strokeLinecap="round"
+      strokeLinecap="round" 
     />
     <circle cx="11.5" cy="11.5" r="1.2" fill="#1c1c1e" />
     <circle cx="16.5" cy="11.5" r="1.2" fill="#1c1c1e" />
@@ -155,7 +205,7 @@ const PythonReaction = () => (
 );
 
 const PostgresReaction = () => (
-  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+  <svg viewBox="0 0 32 32" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" fill="none">
     <ellipse cx="8" cy="15" rx="5" ry="7" fill="#60a5fa" stroke="#1c1c1e" strokeWidth="2" />
     <ellipse cx="24" cy="15" rx="5" ry="7" fill="#60a5fa" stroke="#1c1c1e" strokeWidth="2" />
     <circle cx="16" cy="16" r="7" fill="#3b82f6" stroke="#1c1c1e" strokeWidth="2" />
@@ -167,8 +217,29 @@ const PostgresReaction = () => (
   </svg>
 );
 
+const AwsReaction = () => (
+  <svg viewBox="0 0 32 32" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" fill="none">
+    <path 
+      d="M8 22 C5 22 4 18 5 15 C6 12 9 11 11 11 C13 7 18 6 22 8 C25 9 27 12 27 15 C29 16 30 18 29 20 C29 22 27 22 25 22 Z" 
+      fill="#232f3e" 
+      stroke="#1c1c1e" 
+      strokeWidth="2" 
+    />
+    <path d="M11 19 Q16 23 21 19" stroke="#ff9900" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+    <polygon points="20,18 22.5,19.5 20.5,21" fill="#ff9900" />
+  </svg>
+);
+
+const DbtReaction = () => (
+  <svg viewBox="0 0 32 32" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" fill="none">
+    <polygon points="16,5 26,11 16,17 6,11" fill="#ff8a73" stroke="#1c1c1e" strokeWidth="2" />
+    <polygon points="6,11 16,17 16,27 6,21" fill="#ff694a" stroke="#1c1c1e" strokeWidth="2" />
+    <polygon points="16,17 26,11 26,21 16,27" fill="#e05336" stroke="#1c1c1e" strokeWidth="2" />
+  </svg>
+);
+
 const AIReaction = () => (
-  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+  <svg viewBox="0 0 32 32" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" fill="none">
     <rect x="6" y="8" width="20" height="16" rx="3" fill="#a855f7" stroke="#1c1c1e" strokeWidth="2.2" />
     <circle cx="12" cy="15" r="1.5" fill="#22d3ee" />
     <circle cx="20" cy="15" r="1.5" fill="#22d3ee" />
@@ -178,7 +249,7 @@ const AIReaction = () => (
 );
 
 const CloudReaction = () => (
-  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+  <svg viewBox="0 0 32 32" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" fill="none">
     <path 
       d="M9 20a4 4 0 01-1-7.87 6 6 0 0111.74-1.78 4 4 0 015.65 4.8A4 4 0 0123 20H9z" 
       fill="#a5f3fc" 
@@ -191,20 +262,16 @@ const CloudReaction = () => (
   </svg>
 );
 
-
-
 const WarehouseReaction = () => (
-  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+  <svg viewBox="0 0 32 32" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" fill="none">
     <rect x="6" y="8" width="20" height="18" rx="2" fill="#fb923c" stroke="#1c1c1e" strokeWidth="2.2" />
     <path d="M6 14h20M16 14v12" stroke="#1c1c1e" strokeWidth="2.2" />
     <rect x="13" y="11" width="6" height="6" fill="#fdba74" stroke="#1c1c1e" strokeWidth="1.5" />
   </svg>
 );
 
-
-
 const PowerBIReaction = () => (
-  <svg viewBox="0 0 32 32" className="w-5 h-5 object-contain" fill="none">
+  <svg viewBox="0 0 32 32" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" fill="none">
     <rect x="6" y="18" width="5" height="10" rx="0.5" fill="#f2c811" stroke="#1c1c1e" strokeWidth="2.2" />
     <rect x="14" y="12" width="5" height="16" rx="0.5" fill="#f2a900" stroke="#1c1c1e" strokeWidth="2.2" />
     <rect x="22" y="6" width="5" height="22" rx="0.5" fill="#e07c00" stroke="#1c1c1e" strokeWidth="2.2" />
@@ -239,7 +306,7 @@ export default function SkillsMeet() {
     if (!isMobile || isSlow) return;
     
     const interval = setInterval(() => {
-      const skills = ["Python", "Postgres", "Cloud", "Warehousing", "Power BI", "AI Orchestration"];
+      const skills = ["Python", "Postgres", "AWS Cloud", "dbt", "Cloud", "Warehousing", "Power BI", "AI Orchestration"];
       const randomSkill = skills[Math.floor(Math.random() * skills.length)];
       setHoveredCard(randomSkill);
       
@@ -323,7 +390,7 @@ export default function SkillsMeet() {
 
   // Emoji stream
   const triggerReaction = () => {
-    const emojis = ["😅", "✨", "✋", "🐍", "🐘", "🌀", "☁️", "📦", "🚀", "🔥"];
+    const emojis = ["😅", "✨", "✋", "🐍", "🐘", "🌀", "☁️", "📦", "🚀", "🔥", "📊", "🟧"];
     const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
     const newReaction = {
       id: Date.now() + Math.random(),
@@ -337,12 +404,14 @@ export default function SkillsMeet() {
   };
 
   const skillsList = [
-    { name: "Python", bg: "bg-[#00A7FE]", component: <PythonAvatar />, reaction: <PythonReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
-    { name: "Postgres", bg: "bg-[#FFD860]", component: <PostgresAvatar />, reaction: <PostgresReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
-    { name: "Cloud", bg: "bg-[#A5CF4E]", component: <CloudAvatar />, reaction: <CloudReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
-    { name: "Warehousing", bg: "bg-[#ffa500]", component: <WarehouseAvatar />, reaction: <WarehouseReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
-    { name: "Power BI", bg: "bg-[#f2c811]", component: <PowerBIAvatar />, reaction: <PowerBIReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
-    { name: "AI Orchestration", bg: "bg-[#A855F7]", component: <AIAvatar />, reaction: <AIReaction />, gridClass: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { name: "Python", bg: "bg-[#00A7FE]", component: <PythonAvatar />, reaction: <PythonReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
+    { name: "Postgres", bg: "bg-[#FFD860]", component: <PostgresAvatar />, reaction: <PostgresReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
+    { name: "AWS Cloud", bg: "bg-[#FF9900]", component: <AwsAvatar />, reaction: <AwsReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
+    { name: "dbt", bg: "bg-[#FF694A]", component: <DbtAvatar />, reaction: <DbtReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
+    { name: "Cloud", bg: "bg-[#A5CF4E]", component: <CloudAvatar />, reaction: <CloudReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
+    { name: "Warehousing", bg: "bg-[#38BDF8]", component: <WarehouseAvatar />, reaction: <WarehouseReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
+    { name: "Power BI", bg: "bg-[#F2C811]", component: <PowerBIAvatar />, reaction: <PowerBIReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
+    { name: "AI Orchestration", bg: "bg-[#A855F7]", component: <AIAvatar />, reaction: <AIReaction />, gridClass: "col-span-6 sm:col-span-6 lg:col-span-3" },
   ];
 
   // Letters of SKILLS! title
@@ -392,8 +461,8 @@ export default function SkillsMeet() {
         </AnimatePresence>
       </div>
 
-      {/* 2. Google Meet Participant Grid (Step 3 in sequence: 4 up, 3 down) */}
-      <div ref={gridRef} className="w-full max-w-5xl grid grid-cols-12 gap-4 md:gap-6 px-2 sm:px-6 md:px-8 z-10 mb-28 md:mb-16 min-h-[380px]">
+      {/* 2. Google Meet Participant Grid (2-col grid on mobile, 4-col on desktop) */}
+      <div ref={gridRef} className="w-full max-w-5xl grid grid-cols-12 gap-2.5 xs:gap-3 sm:gap-4 md:gap-6 px-2.5 sm:px-6 md:px-8 z-10 mb-28 md:mb-16 min-h-[380px]">
         <AnimatePresence>
           {showCards && (
             <>
@@ -406,7 +475,7 @@ export default function SkillsMeet() {
                   transition={{ type: "spring", stiffness: 260, damping: 20, delay: idx * 0.08 }}
                   onMouseEnter={() => setHoveredCard(skill.name)}
                   onMouseLeave={() => setHoveredCard(null)}
-                  className={`relative rounded-2xl overflow-hidden aspect-[16/10] border-2 border-black shadow-2xl flex items-center justify-center cursor-pointer group ${skill.gridClass}`}
+                  className={`relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/3] xs:aspect-[16/11] sm:aspect-[16/10] border-2 border-black shadow-[3px_3px_0px_#000] sm:shadow-[5px_5px_0px_#000] md:shadow-2xl flex items-center justify-center cursor-pointer group ${skill.gridClass}`}
                 >
                   <div className={`absolute inset-0 ${skill.bg} transition-transform duration-300 group-hover:scale-105`} />
                   <div className="absolute inset-0 bg-[radial-gradient(#1c1c1c_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
@@ -415,9 +484,9 @@ export default function SkillsMeet() {
                     {skill.component}
                   </div>
 
-                  <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm rounded px-2.5 py-1 text-white font-mono text-[10px] md:text-xs tracking-wider z-20 flex items-center space-x-1.5 border border-white/10">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                    <span>{skill.name}</span>
+                  <div className="absolute bottom-1.5 left-1.5 sm:bottom-3 sm:left-3 bg-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 sm:px-2.5 sm:py-1 text-white font-mono text-[8px] xs:text-[9px] sm:text-[10px] md:text-xs tracking-wider z-20 flex items-center space-x-1 sm:space-x-1.5 border border-white/10 max-w-[92%]">
+                    <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
+                    <span className="truncate">{skill.name}</span>
                   </div>
 
                   <AnimatePresence>
@@ -427,7 +496,7 @@ export default function SkillsMeet() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0, y: 10 }}
                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                        className="absolute top-3 left-3 bg-white border-2 border-black rounded-full w-8 h-8 flex items-center justify-center text-lg z-30 shadow-md"
+                        className="absolute top-1.5 left-1.5 sm:top-3 sm:left-3 bg-white border-2 border-black rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center text-xs sm:text-lg z-30 shadow-md"
                       >
                         {skill.reaction}
                       </motion.div>

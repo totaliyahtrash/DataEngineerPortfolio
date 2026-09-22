@@ -1020,7 +1020,7 @@ export default function Hero({ marioTriggered, setMarioTriggered }) {
       >
         <div className="absolute top-[-8px] left-[25px] w-12 h-4 paper-tape rotate-[3deg] border-x border-black/10" />
         <span className="font-bold block text-[10px] uppercase border-b border-black/10 pb-0.5 mb-1 text-black/50">scrapbook.md</span>
-        <p className="leading-tight text-[9px] font-semibold">raw code, custom pipelines, clean data design.</p>
+        <p className="leading-tight text-[9px] font-semibold">raw code, custom pipelines, analytics & data design.</p>
       </motion.div>
 
       <motion.div

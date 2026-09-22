@@ -438,25 +438,25 @@ export default function Bio() {
             </h3>
             
             <p className="font-mono text-xs leading-relaxed text-left font-semibold text-black/85 mb-4">
-              architecting high-throughput ingestion pipelines and schema-locked storage systems. actively exploring integrations with Model Context Protocol (MCP) and Multi-Agent Systems (MAG).
+              building resilient ETL pipelines, relational data models, and business intelligence dashboards. bridging the gap between raw data infrastructure and actionable analytical insights.
             </p>
 
             <div className="border-t-2 border-dashed border-black/20 pt-4 space-y-2.5">
               <div className="flex items-center space-x-2">
                 <span className="text-[#7C3AED] font-bold text-xs">✶</span>
-                <span className="font-mono text-[10px] font-bold text-black/70">custom MCP server development</span>
+                <span className="font-mono text-[10px] font-bold text-black/70">scalable ETL pipelines & star schemas</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-[#7C3AED] font-bold text-xs">✶</span>
-                <span className="font-mono text-[10px] font-bold text-black/70">multi-agent orchestrations (MAG)</span>
+                <span className="font-mono text-[10px] font-bold text-black/70">BI dashboards & executive metrics</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-[#7C3AED] font-bold text-xs">✶</span>
-                <span className="font-mono text-[10px] font-bold text-black/70">15k events/sec log streams</span>
+                <span className="font-mono text-[10px] font-bold text-black/70">custom AI agent & MCP orchestration</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-[#7C3AED] font-bold text-xs">✶</span>
-                <span className="font-mono text-[10px] font-bold text-black/70">schema validator mapping & pipelines</span>
+                <span className="font-mono text-[10px] font-bold text-black/70">exploratory data analysis & SQL modeling</span>
               </div>
             </div>
           </motion.div>
